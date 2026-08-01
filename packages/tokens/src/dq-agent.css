@@ -53,6 +53,7 @@ html {
   --dq-chat-column-max: 720px;
   --dq-chat-gutter: var(--dq-space-lg);
   --dq-chat-turn-gap: var(--dq-space-ms);
+  /* User↔agent column AND timeline event spacing (tools as footnotes) */
   --dq-chat-block-gap: var(--dq-space-sm);
 
   /* ── Message chrome ── */
