@@ -68,7 +68,7 @@
 }
 
 .dq-btn--primary {
-  color: #fff;
+  color: var(--dq-on-accent, #fff);
   background: var(--dq-accent);
 }
 
@@ -664,9 +664,11 @@
 
 .dq-tag--light.dq-tag--info,
 .dq-tag--light.dq-tag--primary {
-  color: var(--dq-accent);
-  background: var(--dq-accent-surface);
+  /* Ink on stronger tint — accent-on-8%-tint fails WCAG on light themes */
+  color: var(--dq-label-primary);
+  background: var(--dq-accent-tint-strong, var(--dq-accent-surface));
   border-color: var(--dq-accent-surface-border);
+  font-weight: 600;
 }
 
 .dq-tag--plain {
@@ -693,7 +695,7 @@
 
 .dq-tag--dark.dq-tag--info,
 .dq-tag--dark.dq-tag--primary {
-  color: #fff;
+  color: var(--dq-on-accent, #fff);
   background: var(--dq-accent);
   border-color: transparent;
 }

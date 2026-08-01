@@ -17,6 +17,8 @@ html.dq-tokyo-night,
   accent-color: var(--dq-accent);
 
   --dq-accent: #7aa2f7;
+
+  --dq-on-accent: #1a1b26;
   --dq-accent-hover: #9db6f9;
   --dq-accent-muted: #7dcfff;
   --dq-accent-tint: rgba(122, 162, 247, 0.14);
@@ -218,6 +220,49 @@ html.dq-tokyo-night,
   --dq-system-blue: var(--dq-info);
 
   --dq-row-gutter: 16px;
+
+  /* ── Shell / Chat surfaces (theme-owned; products must not override) ── */
+  --dq-shell-sidebar-bg: var(--dq-material-chrome, var(--dq-bg-base));
+  --dq-shell-sidebar-border: var(--dq-border-hairline, var(--dq-border-subtle));
+  --dq-shell-sidebar-blur: none;
+  --dq-shell-panel-bg: var(--dq-material-chrome, var(--dq-bg-base));
+  --dq-shell-panel-border: var(--dq-border-hairline, var(--dq-border-subtle));
+  --dq-shell-panel-blur: none;
+  --dq-shell-stream-bg: var(--dq-bg-page);
+  --dq-shell-header-bg: transparent;
+  --dq-shell-header-blur: none;
+  --dq-shell-divider: var(--dq-border-hairline, var(--dq-border-subtle));
+  --dq-shell-rail-width-collapsed: 44px;
+  --dq-shell-radius: 0px;
+  --dq-shell-gap: 0px;
+  --dq-shell-shadow: none;
+  --dq-chat-column-max: 720px;
+  --dq-chat-gutter: 28px;
+  --dq-chat-turn-gap: 20px;
+  --dq-chat-block-gap: 10px;
+  --dq-msg-user-bg: color-mix(in srgb, var(--dq-accent) 22%, transparent);
+  --dq-msg-user-border: color-mix(in srgb, var(--dq-accent) 28%, transparent);
+  --dq-msg-user-fg: var(--dq-label-primary);
+  --dq-msg-user-radius: 16px 16px 5px 16px;
+  --dq-msg-user-shadow: none;
+  --dq-msg-agent-fg: var(--dq-label-primary);
+  --dq-msg-agent-secondary: var(--dq-label-secondary);
+  --dq-msg-agent-pad-y: 2px;
+  --dq-msg-enter-duration: 0.18s;
+  --dq-msg-enter-ease: ease;
+  --dq-composer-radius: 14px;
+  --dq-composer-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+  --dq-composer-border: var(--dq-border-strong, var(--dq-border));
+  --dq-composer-pad: 12px;
+  --dq-composer-max-height: 240px;
+  --dq-composer-fade: linear-gradient(to top, var(--dq-shell-stream-bg) 30%, transparent 100%);
+  --dq-tool-card-radius: 10px;
+  --dq-tool-card-bg: color-mix(in srgb, var(--dq-label-primary) 3%, transparent);
+  --dq-tool-card-border: color-mix(in srgb, var(--dq-label-primary) 7%, transparent);
+  --dq-welcome-title-size: var(--dq-font-size-hero);
+  --dq-welcome-chip-bg: color-mix(in srgb, var(--dq-label-primary) 4%, transparent);
+  --dq-welcome-chip-border: color-mix(in srgb, var(--dq-label-primary) 10%, transparent);
+  --dq-welcome-chip-hover: color-mix(in srgb, var(--dq-accent) 10%, transparent);
   --dq-selection-bg: rgba(122, 162, 247, 0.30);
   --dq-selection-color: inherit;
 
@@ -236,13 +281,13 @@ html.dq-tokyo-night body {
 }
 
 html.dq-tokyo-night .dq-btn--primary,
-.dq-tokyo-night .dq-btn--primary { color: #1a1b26; }
+.dq-tokyo-night .dq-btn--primary { color: var(--dq-on-accent); }
 html.dq-tokyo-night .dq-btn--primary.dq-btn--plain,
 html.dq-tokyo-night .dq-btn--primary.is-plain,
 .dq-tokyo-night .dq-btn--primary.dq-btn--plain,
 .dq-tokyo-night .dq-btn--primary.is-plain { color: var(--dq-accent); }
 html.dq-tokyo-night .dq-icon-btn--primary,
-.dq-tokyo-night .dq-icon-btn--primary { color: #1a1b26; }
+.dq-tokyo-night .dq-icon-btn--primary { color: var(--dq-on-accent); }
 
 html.dq-tokyo-night .dq-shadcn-sidebar,
 .dq-tokyo-night .dq-shadcn-sidebar {

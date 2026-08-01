@@ -23,6 +23,7 @@ html.dq-shadcn-light,
    * Warm-neutral light: dark primary actions, zinc accents
    */
   --dq-accent: #18181b;
+  --dq-on-accent: #ffffff;
   --dq-accent-hover: #27272a;
   --dq-accent-muted: #71717a;
   --dq-accent-tint: rgba(24, 24, 27, 0.06);
@@ -63,11 +64,12 @@ html.dq-shadcn-light,
   /* ─── Text Hierarchy ───
    * Dark-on-light: high contrast primary, fading gracefully
    */
-  --dq-label-primary: rgba(9, 9, 11, 0.92);
-  --dq-label-secondary: rgba(9, 9, 11, 0.60);
-  --dq-label-tertiary: rgba(9, 9, 11, 0.40);
-  --dq-label-quaternary: rgba(9, 9, 11, 0.26);
-  --dq-label-disabled: rgba(9, 9, 11, 0.16);
+  /* Solid ink — translucent rgba washes out on light glass */
+  --dq-label-primary: #09090b;
+  --dq-label-secondary: #27272a;
+  --dq-label-tertiary: #52525b;
+  --dq-label-quaternary: #71717a;
+  --dq-label-disabled: #a1a1aa;
 
   /* ─── Borders ───
    * Light-mode borders — visible but gentle
@@ -199,9 +201,10 @@ html.dq-shadcn-light,
    * Very subtle warm glow at top — barely perceptible
    */
   --dq-bg-page-glow: radial-gradient(
-    ellipse 140% 200px at 50% -4%,
-    rgba(24, 24, 27, 0.02) 0%,
-    transparent 60%
+    ellipse 120% 300px at 50% -6%,
+    rgba(24, 24, 27, 0.08) 0%,
+    rgba(250, 250, 250, 0.9) 45%,
+    transparent 72%
   );
 
   /* ─── Radius ───
@@ -270,12 +273,59 @@ html.dq-shadcn-light,
 
   --dq-row-gutter: 16px;
 
-  /* Apply font */
+  /* ── Shell / Chat surfaces (theme-owned; products must not override) ── */
+  /* Clear three-zone depth: sidebar/panel cooler gray, stream pure white */
+  --dq-shell-sidebar-bg: #f0f0f2;
+  --dq-shell-sidebar-border: rgba(0, 0, 0, 0.08);
+  --dq-shell-sidebar-blur: none;
+  --dq-shell-panel-bg: #f4f4f5;
+  --dq-shell-panel-border: rgba(0, 0, 0, 0.08);
+  --dq-shell-panel-blur: none;
+  --dq-shell-stream-bg: #ffffff;
+  --dq-shell-header-bg: transparent;
+  --dq-shell-header-blur: none;
+  --dq-shell-divider: var(--dq-border-hairline, var(--dq-border));
+  --dq-shell-rail-width-collapsed: 44px;
+  --dq-shell-radius: 0px;
+  --dq-shell-gap: 0px;
+  --dq-shell-shadow: none;
+  --dq-chat-column-max: 720px;
+  --dq-chat-gutter: 28px;
+  --dq-chat-turn-gap: 20px;
+  --dq-chat-block-gap: 10px;
+  --dq-msg-user-bg: color-mix(in srgb, var(--dq-accent) 12%, #ffffff);
+  --dq-msg-user-border: color-mix(in srgb, var(--dq-accent) 20%, transparent);
+  --dq-msg-user-fg: var(--dq-label-primary);
+  --dq-msg-user-radius: 16px 16px 5px 16px;
+  --dq-msg-user-shadow: none;
+  --dq-msg-agent-fg: #000000;
+  --dq-msg-agent-secondary: #27272a;
+  --dq-msg-agent-pad-y: 8px;
+  --dq-font-size-prose: 1rem;
+  --dq-msg-enter-duration: 0.18s;
+  --dq-msg-enter-ease: ease;
+  --dq-composer-radius: 14px;
+  --dq-composer-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  --dq-composer-border: var(--dq-border);
+  --dq-composer-pad: 12px;
+  --dq-composer-max-height: 240px;
+  --dq-composer-fade: linear-gradient(to top, var(--dq-shell-stream-bg) 30%, transparent 100%);
+  --dq-tool-card-radius: 10px;
+  --dq-tool-card-bg: color-mix(in srgb, var(--dq-label-primary) 2.5%, transparent);
+  --dq-tool-card-border: color-mix(in srgb, var(--dq-label-primary) 8%, transparent);
+  --dq-welcome-title-size: var(--dq-font-size-hero);
+  --dq-welcome-chip-bg: #ffffff;
+  --dq-welcome-chip-border: var(--dq-border);
+  --dq-welcome-chip-hover: color-mix(in srgb, var(--dq-accent) 8%, #ffffff);
+
+  /* Apply font — subpixel on light (antialiased looks washed) */
   font-family: var(--dq-font-sans);
   background-color: var(--dq-bg-page);
   background-image: var(--dq-bg-page-glow);
   background-repeat: no-repeat;
   color: var(--dq-label-primary);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
 }
 
 html.dq-shadcn-light body {
@@ -290,7 +340,7 @@ html.dq-shadcn-light body {
  */
 html.dq-shadcn-light .dq-btn--primary,
 .dq-shadcn-light .dq-btn--primary {
-  color: #fafafa;
+  color: var(--dq-on-accent);
 }
 
 html.dq-shadcn-light .dq-btn--primary.dq-btn--plain,
@@ -302,7 +352,7 @@ html.dq-shadcn-light .dq-btn--primary.is-plain,
 
 html.dq-shadcn-light .dq-icon-btn--primary,
 .dq-shadcn-light .dq-icon-btn--primary {
-  color: #fafafa;
+  color: var(--dq-on-accent);
 }
 
 /* ─── shadcn Light Specific Components ─── */
@@ -416,7 +466,7 @@ html.dq-shadcn-light .dq-shadcn-badge,
 html.dq-shadcn-light .dq-shadcn-badge--accent,
 .dq-shadcn-light .dq-shadcn-badge--accent {
   background: var(--dq-accent);
-  color: #fafafa;
+  color: var(--dq-on-accent);
   border-color: var(--dq-accent);
 }
 

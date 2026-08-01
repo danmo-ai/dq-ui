@@ -73,6 +73,7 @@ html.dq-tauri-macos.dark .models-page {
 /* Optional inactive window state (host app toggles .is-inactive on <html>). */
 html.dq-tauri-macos.is-inactive {
   --dq-accent: color-mix(in srgb, #0a84ff 65%, #7f7f82);
+  --dq-on-accent: #ffffff;
 }
 
 html.dq-tauri-macos.is-inactive .app-header.dq-app-header,

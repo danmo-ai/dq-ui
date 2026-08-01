@@ -1,51 +1,56 @@
 /**
- * DanQing typography scale — shared across themes.
- * Import before component styles so every theme inherits the same type rhythm.
+ * DanQing typography — 4 semantic steps only.
  *
  * Base: 16px (browser default) so 1rem == 16px.
  *
- * Public API: only the semantic aliases below. Numeric steps are
- * implementation detail and should only be used to define aliases.
+ *   caption  12px  badges / kbd / timestamps
+ *   body     14px  default UI (chrome, tools, forms, lists)
+ *   prose    16px  chat & long-form reading
+ *   title    20px  session / page titles
  *
- * Scale (10 steps):
- *   11 · 12 · 13 · 14 · 15 · 16 · 18 · 20 · 24 · 28
+ * Legacy aliases (footnote / secondary / …) map onto these four.
+ * Do not invent new steps or hardcode 10/11px in products.
  */
 
 :root,
 html {
-  /* ── Numeric scale (1rem = 16px). Do not use directly. ── */
-  --dq-font-size-2xs: 0.6875rem;  /* 11px */
-  --dq-font-size-xs:  0.75rem;    /* 12px */
-  --dq-font-size-sm:  0.8125rem;  /* 13px */
-  --dq-font-size-base:0.875rem;   /* 14px */
-  --dq-font-size-md:  0.9375rem;  /* 15px */
-  --dq-font-size-lg:  1rem;       /* 16px */
-  --dq-font-size-xl:  1.125rem;   /* 18px */
-  --dq-font-size-2xl: 1.25rem;    /* 20px */
-  --dq-font-size-3xl: 1.5rem;     /* 24px */
-  --dq-font-size-4xl: 1.75rem;    /* 28px */
+  /* ── Numeric scale (implementation detail) ── */
+  --dq-font-size-2xs: 0.75rem;   /* 12px */
+  --dq-font-size-xs:  0.75rem;   /* 12px */
+  --dq-font-size-sm:  0.875rem;  /* 14px */
+  --dq-font-size-base:0.875rem;  /* 14px */
+  --dq-font-size-md:  1rem;      /* 16px */
+  --dq-font-size-lg:  1rem;      /* 16px */
+  --dq-font-size-xl:  1.25rem;   /* 20px */
+  --dq-font-size-2xl: 1.25rem;   /* 20px */
+  --dq-font-size-3xl: 1.25rem;   /* 20px */
+  --dq-font-size-4xl: 1.25rem;   /* 20px */
 
-  /* ── Semantic aliases — use these in components and product styles ── */
-  --dq-font-size-caption:  var(--dq-font-size-2xs); /* 11px: badges, kbd, hints, tiny metadata */
-  --dq-font-size-footnote: var(--dq-font-size-xs);  /* 12px: timestamps, footnotes, secondary labels */
-  --dq-font-size-body:     var(--dq-font-size-sm);  /* 13px: default body / control text */
-  --dq-font-size-secondary:var(--dq-font-size-base); /* 14px: supporting text, descriptions */
-  --dq-font-size-callout:  var(--dq-font-size-md);  /* 15px: emphasized body, card subtitles */
-  --dq-font-size-title:    var(--dq-font-size-lg);  /* 16px: card / dialog titles, h3 */
-  --dq-font-size-heading:  var(--dq-font-size-xl);  /* 18px: section headings, h2 */
-  --dq-font-size-display:  var(--dq-font-size-2xl); /* 20px: page headings / hero */
-  --dq-font-size-hero:     var(--dq-font-size-3xl); /* 24px: large hero titles */
-  --dq-font-size-page:     var(--dq-font-size-4xl); /* 28px: largest page titles */
+  /* ── Canonical 4 steps ── */
+  --dq-font-size-caption: 0.75rem;  /* 12px */
+  --dq-font-size-body:    0.875rem; /* 14px */
+  --dq-font-size-prose:   1rem;     /* 16px */
+  --dq-font-size-title:   1.25rem;  /* 20px */
 
-  /* ── Line-height tokens ── */
+  /* ── Legacy aliases → collapse into the 4 steps ── */
+  --dq-font-size-footnote:  var(--dq-font-size-caption); /* was 13 → 12 */
+  --dq-font-size-secondary: var(--dq-font-size-body);    /* was 15 → 14 */
+  --dq-font-size-callout:   var(--dq-font-size-prose);   /* was 16 → prose */
+  --dq-font-size-heading:   var(--dq-font-size-title);   /* was 20 → title */
+  --dq-font-size-display:   var(--dq-font-size-title);   /* was 24 → title */
+  --dq-font-size-hero:      var(--dq-font-size-title);   /* was 28 → title */
+  --dq-font-size-page:      var(--dq-font-size-title);   /* was 32 → title */
+
+  /* ── Line-height ── */
   --dq-line-height-none:   1;
   --dq-line-height-tight:  1.25;
   --dq-line-height-snug:   1.35;
   --dq-line-height-normal: 1.45;
   --dq-line-height-relaxed:1.55;
   --dq-line-height-loose:  1.7;
+  --dq-line-height-prose:  1.65;
 
-  /* ── Letter-spacing tokens ── */
+  /* ── Letter-spacing ── */
   --dq-tracking-tighter: -0.02em;
   --dq-tracking-tight:   -0.01em;
   --dq-tracking-normal:   0;
@@ -53,16 +58,16 @@ html {
   --dq-tracking-wider:    0.04em;
   --dq-tracking-widest:   0.06em;
 
-  /* ── Spacing scale (1rem = 16px). Prefer these over ad-hoc px/rem. ── */
+  /* ── Spacing ── */
   --dq-space-2xs: 0.125rem; /* 2px */
   --dq-space-xs: 0.25rem;   /* 4px */
   --dq-space-sm: 0.5rem;    /* 8px */
+  --dq-space-ms: 0.75rem;   /* 12px */
   --dq-space-md: 1rem;      /* 16px */
   --dq-space-lg: 1.5rem;    /* 24px */
   --dq-space-xl: 2rem;      /* 32px */
   --dq-space-2xl: 3rem;     /* 48px */
 
-  /* Scrollbar geometry — themes may override thumb color; size is shared. */
   --dq-scrollbar-size: 6px;
   --dq-scrollbar-size-hover: 8px;
 }

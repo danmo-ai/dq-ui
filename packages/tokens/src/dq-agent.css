@@ -1,22 +1,97 @@
 /**
  * Agent / chat shared utilities — theme-neutral classes on top of --dq-* tokens.
  * Import after a theme CSS (e.g. dq-mac.css) and alongside dq-glass.css.
+ *
+ * Shell / chat / motion tokens below are theme-neutral defaults (color-mix of
+ * existing --dq-*). Each theme CSS should override the shell surface block so
+ * sidebar / stream / panel / bubbles track the active palette.
  */
 
 :root,
 html {
   --dq-color-black: #000000;
+  /*
+   * Text on solid accent fills (primary buttons, composer send, badges).
+   * Every theme CSS MUST set --dq-on-accent for contrast:
+   *   dark accent → #fff (or warm white); light accent → near-black.
+   * Prefer var(--dq-on-accent) over --dq-color-white / #fff on accent fills.
+   */
+  --dq-on-accent: #ffffff;
 
-  --dq-font-size-prose: var(--dq-font-size-secondary); /* 14px reading body */
-  --dq-line-height-prose: 1.65;
+  /* --dq-font-size-prose / --dq-line-height-prose defined in dq-typography.css */
 
   --dq-code-bg: color-mix(in srgb, var(--dq-label-primary) 6%, transparent);
   --dq-code-border: color-mix(in srgb, var(--dq-label-primary) 12%, transparent);
   --dq-code-inline-bg: var(--dq-fill-tertiary);
+  --dq-code-radius: var(--dq-radius-control-sm, 8px);
+  --dq-code-inline-radius: 4px;
+  --dq-prose-blockquote-pad: var(--dq-space-sm);
+  --dq-prose-table-cell-pad-y: var(--dq-space-sm);
+  --dq-prose-table-cell-pad-x: var(--dq-space-ms);
 
   --dq-sidebar-width-collapsed: 44px;
   --dq-sidebar-row-height: 32px;
   --dq-sidebar-row-padding-x: 10px;
+
+  /* ── Shell surfaces (themes override for three-zone depth) ── */
+  --dq-shell-sidebar-bg: var(--dq-bg-base);
+  --dq-shell-sidebar-border: var(--dq-border-hairline, var(--dq-border-subtle));
+  --dq-shell-sidebar-blur: none;
+  --dq-shell-panel-bg: var(--dq-bg-base);
+  --dq-shell-panel-border: var(--dq-border-hairline, var(--dq-border-subtle));
+  --dq-shell-panel-blur: none;
+  --dq-shell-stream-bg: var(--dq-bg-page, var(--dq-bg-base));
+  --dq-shell-header-bg: transparent;
+  --dq-shell-header-blur: none;
+  --dq-shell-divider: var(--dq-border-hairline, var(--dq-border-subtle));
+  --dq-shell-rail-width-collapsed: var(--dq-sidebar-width-collapsed);
+  --dq-shell-radius: 0px;
+  --dq-shell-gap: 0px;
+  --dq-shell-shadow: none;
+
+  /* ── Chat geometry ── */
+  --dq-chat-column-max: 720px;
+  --dq-chat-gutter: var(--dq-space-lg);
+  --dq-chat-turn-gap: var(--dq-space-ms);
+  --dq-chat-block-gap: var(--dq-space-sm);
+
+  /* ── Message chrome ── */
+  --dq-msg-user-bg: color-mix(in srgb, var(--dq-accent) 22%, transparent);
+  --dq-msg-user-border: color-mix(in srgb, var(--dq-accent) 28%, transparent);
+  --dq-msg-user-fg: var(--dq-label-primary);
+  --dq-msg-user-radius: 16px 16px 5px 16px;
+  --dq-msg-user-shadow: none;
+
+  --dq-msg-agent-fg: var(--dq-label-primary);
+  --dq-msg-agent-secondary: var(--dq-label-secondary);
+  --dq-msg-agent-pad-y: var(--dq-space-xs);
+
+  --dq-msg-enter-duration: 0.22s;
+  --dq-msg-enter-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Composer ── */
+  --dq-composer-radius: 14px;
+  --dq-composer-shadow: 0 10px 32px color-mix(in srgb, var(--dq-mask, #000) 32%, transparent);
+  --dq-composer-border: var(--dq-border-strong, var(--dq-border));
+  --dq-composer-pad: var(--dq-space-ms);
+  --dq-composer-max-height: 240px;
+  --dq-composer-fade: linear-gradient(
+    to top,
+    var(--dq-shell-stream-bg) 12%,
+    color-mix(in srgb, var(--dq-shell-stream-bg) 55%, transparent) 55%,
+    transparent 100%
+  );
+
+  /* ── Tool card ── */
+  --dq-tool-card-radius: var(--dq-radius-control-sm, 8px);
+  --dq-tool-card-bg: color-mix(in srgb, var(--dq-label-primary) 2.5%, transparent);
+  --dq-tool-card-border: color-mix(in srgb, var(--dq-label-primary) 8%, transparent);
+
+  /* ── Welcome ── */
+  --dq-welcome-title-size: var(--dq-font-size-page);
+  --dq-welcome-chip-bg: color-mix(in srgb, var(--dq-accent) 10%, var(--dq-bg-elevated));
+  --dq-welcome-chip-border: color-mix(in srgb, var(--dq-accent) 28%, transparent);
+  --dq-welcome-chip-hover: color-mix(in srgb, var(--dq-accent) 18%, transparent);
 }
 
 /* ── Prose (chat / markdown reading column) ── */
@@ -24,7 +99,7 @@ html {
 .dq-prose {
   font-size: var(--dq-font-size-prose);
   line-height: var(--dq-line-height-prose);
-  color: var(--dq-label-primary);
+  color: var(--dq-msg-agent-fg, var(--dq-label-primary));
   word-break: break-word;
 }
 
@@ -49,20 +124,22 @@ html {
   color: var(--dq-label-primary);
 }
 
-.dq-prose h1 { font-size: var(--dq-font-size-display); }
-.dq-prose h2 { font-size: var(--dq-font-size-heading); }
-.dq-prose h3 { font-size: var(--dq-font-size-title); }
-.dq-prose h4 { font-size: var(--dq-font-size-callout); font-weight: 600; }
+.dq-prose h1,
+.dq-prose h2,
+.dq-prose h3 {
+  font-size: var(--dq-font-size-title);
+}
+.dq-prose h4,
 .dq-prose h5,
 .dq-prose h6 {
-  font-size: var(--dq-font-size-secondary);
+  font-size: var(--dq-font-size-prose);
   font-weight: 600;
 }
 
 .dq-prose p {
   margin: 0.65em 0;
   font-size: inherit;
-  color: var(--dq-label-secondary);
+  color: var(--dq-msg-agent-fg, var(--dq-label-primary));
 }
 
 .dq-prose ul,
@@ -70,7 +147,7 @@ html {
   margin: 0.5em 0;
   padding-left: 1.4em;
   font-size: inherit;
-  color: var(--dq-label-secondary);
+  color: var(--dq-msg-agent-fg, var(--dq-label-primary));
 }
 
 .dq-prose li + li {
@@ -79,7 +156,7 @@ html {
 
 .dq-prose blockquote {
   margin: 0.65em 0;
-  padding: 0.35em 0 0.35em 12px;
+  padding: 0.35em 0 0.35em var(--dq-prose-blockquote-pad);
   border-left: 3px solid var(--dq-accent);
   color: var(--dq-label-tertiary);
   font-size: inherit;
@@ -110,14 +187,14 @@ html {
   margin: 0.75em 0;
   font-size: var(--dq-font-size-body);
   border: 1px solid var(--dq-code-border);
-  border-radius: var(--dq-radius-control, 8px);
+  border-radius: var(--dq-code-radius);
   overflow: hidden;
 }
 
 .dq-prose th,
 .dq-prose td {
   border: 1px solid color-mix(in srgb, var(--dq-label-primary) 10%, transparent);
-  padding: 8px 12px;
+  padding: var(--dq-prose-table-cell-pad-y) var(--dq-prose-table-cell-pad-x);
   text-align: left;
   line-height: 1.5;
 }
@@ -140,24 +217,24 @@ html {
 
 .dq-prose img {
   max-width: 100%;
-  border-radius: 8px;
+  border-radius: var(--dq-code-radius);
   margin: 0.5em 0;
 }
 
 .dq-prose code,
 .dq-code {
   padding: 0.1em 0.35em;
-  border-radius: 4px;
+  border-radius: var(--dq-code-inline-radius);
   background: var(--dq-code-inline-bg);
   font-family: var(--dq-font-mono);
-  font-size: 0.92em;
+  font-size: var(--dq-font-size-caption);
 }
 
 .dq-prose pre,
 .dq-code-block {
   margin: 0.75em 0;
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: var(--dq-space-sm) var(--dq-space-ms);
+  border-radius: var(--dq-code-radius);
   border: 1px solid var(--dq-code-border);
   background: var(--dq-code-bg);
   overflow-x: auto;
@@ -174,6 +251,23 @@ html {
   font-size: inherit;
   line-height: inherit;
   color: inherit;
+}
+
+/* ── Message enter (products opt-in via .dq-msg-enter) ── */
+
+.dq-msg-enter {
+  animation: dq-msg-enter var(--dq-msg-enter-duration) var(--dq-msg-enter-ease) both;
+}
+
+@keyframes dq-msg-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── Status dots (Cursor-like scan affordance) ── */
@@ -225,6 +319,15 @@ html {
   .dq-status-dot--running {
     animation: none;
   }
+
+  .dq-msg-enter {
+    animation: none;
+  }
+
+  :root,
+  html {
+    --dq-msg-enter-duration: 0s;
+  }
 }
 
 /* ── Keyboard hint ── */
@@ -235,7 +338,7 @@ html {
   justify-content: center;
   min-width: 1.4em;
   padding: 0.1em 0.4em;
-  border-radius: 4px;
+  border-radius: var(--dq-code-inline-radius);
   border: 1px solid var(--dq-border);
   background: var(--dq-fill-secondary);
   color: var(--dq-label-secondary);

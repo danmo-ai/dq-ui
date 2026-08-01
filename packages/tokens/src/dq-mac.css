@@ -5,8 +5,8 @@
  */
 @import url('./dq-typography.css');
 
-:root,
-html.dark {
+/* Scoped to mac only — never :root (leaks white labels into light themes). */
+html.dq-mac {
   accent-color: var(--dq-accent);
   --dq-font-sans:
     -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', ui-sans-serif, system-ui,
@@ -16,6 +16,8 @@ html.dark {
   --dq-font-weight-medium: 500;
 
   --dq-accent: #0a84ff;
+
+  --dq-on-accent: #ffffff;
   --dq-accent-hover: #409cff;
   --dq-accent-muted: #339dff;
   --dq-accent-tint: rgba(10, 132, 255, 0.14);
@@ -26,11 +28,12 @@ html.dark {
   --dq-material-elevated: #2c2c2e;
   --dq-material-grouped: #1c1c1e;
 
-  --dq-bg-page: #000000;
-  --dq-bg-base: var(--dq-material-chrome);
-  --dq-bg-elevated: var(--dq-material-elevated);
-  --dq-surface-elevated: #242426;
-  --dq-surface-grouped: var(--dq-material-grouped);
+  /* Layered charcoal — not void black (void reads as broken/unfinished) */
+  --dq-bg-page: #121214;
+  --dq-bg-base: #1c1c1e;
+  --dq-bg-elevated: #2c2c2e;
+  --dq-surface-elevated: #28282a;
+  --dq-surface-grouped: #1c1c1e;
 
   --dq-fill-control: var(--dq-material-chrome);
   --dq-fill-secondary: #2c2c2e;
@@ -42,11 +45,11 @@ html.dark {
   --dq-fill-dimmer: #0e0e0f;
   --dq-fill-grouped: var(--dq-glass-grouped-bg);
 
-  --dq-label-primary: rgba(255, 255, 255, 0.92);
-  --dq-label-secondary: rgba(255, 255, 255, 0.72);
-  --dq-label-tertiary: rgba(255, 255, 255, 0.48);
-  --dq-label-quaternary: rgba(255, 255, 255, 0.32);
-  --dq-label-disabled: rgba(255, 255, 255, 0.22);
+  --dq-label-primary: rgba(255, 255, 255, 0.94);
+  --dq-label-secondary: rgba(255, 255, 255, 0.78);
+  --dq-label-tertiary: rgba(255, 255, 255, 0.55);
+  --dq-label-quaternary: rgba(255, 255, 255, 0.36);
+  --dq-label-disabled: rgba(255, 255, 255, 0.24);
 
   --dq-border: rgba(255, 255, 255, 0.1);
   --dq-border-subtle: rgba(255, 255, 255, 0.06);
@@ -75,7 +78,7 @@ html.dark {
   --dq-glass-control-bg-solid: var(--dq-fill-secondary);
   --dq-glass-tooltip-bg: rgba(28, 28, 30, 0.92);
   --dq-glass-scrim: rgba(0, 0, 0, 0.35);
-  --dq-glass-floating-bar-bg: rgba(44, 44, 46, 0.92);
+  --dq-glass-floating-bar-bg: rgba(40, 40, 42, 0.96);
 
   /* Inset lists & grouped settings blocks */
   --dq-surface-inset: rgba(255, 255, 255, 0.03);
@@ -158,12 +161,7 @@ html.dark {
   --dq-fill-on-glass-pressed: rgba(255, 255, 255, 0.14);
   --dq-fill-on-glass-subtle: rgba(255, 255, 255, 0.06);
 
-  --dq-bg-page-glow: radial-gradient(
-    ellipse 130% 240px at 50% -4%,
-    rgba(10, 132, 255, 0.04) 0%,
-    rgba(255, 255, 255, 0.02) 30%,
-    transparent 58%
-  );
+  --dq-bg-page-glow: none;
 
   --dq-radius-group: 12px;
   --dq-radius-control: 10px;
@@ -222,6 +220,49 @@ html.dark {
 
   --dq-row-gutter: 16px;
 
+  /* ── Shell / Chat surfaces (theme-owned; products must not override) ── */
+  --dq-shell-sidebar-bg: #1a1a1c;
+  --dq-shell-sidebar-border: rgba(255, 255, 255, 0.06);
+  --dq-shell-sidebar-blur: none;
+  --dq-shell-panel-bg: #18181a;
+  --dq-shell-panel-border: rgba(255, 255, 255, 0.06);
+  --dq-shell-panel-blur: none;
+  --dq-shell-stream-bg: #121214;
+  --dq-shell-header-bg: transparent;
+  --dq-shell-header-blur: none;
+  --dq-shell-divider: rgba(255, 255, 255, 0.06);
+  --dq-shell-rail-width-collapsed: 44px;
+  --dq-shell-radius: 0px;
+  --dq-shell-gap: 0px;
+  --dq-shell-shadow: none;
+  --dq-chat-column-max: 680px;
+  --dq-chat-gutter: 32px;
+  --dq-chat-turn-gap: 28px;
+  --dq-chat-block-gap: 12px;
+  --dq-msg-user-bg: rgba(10, 132, 255, 0.18);
+  --dq-msg-user-border: rgba(10, 132, 255, 0.22);
+  --dq-msg-user-fg: rgba(255, 255, 255, 0.95);
+  --dq-msg-user-radius: 18px 18px 6px 18px;
+  --dq-msg-user-shadow: none;
+  --dq-msg-agent-fg: rgba(255, 255, 255, 0.95);
+  --dq-msg-agent-secondary: rgba(255, 255, 255, 0.78);
+  --dq-msg-agent-pad-y: 6px;
+  --dq-msg-enter-duration: 0.18s;
+  --dq-msg-enter-ease: ease;
+  --dq-composer-radius: 16px;
+  --dq-composer-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  --dq-composer-border: rgba(255, 255, 255, 0.1);
+  --dq-composer-pad: 12px;
+  --dq-composer-max-height: 240px;
+  --dq-composer-fade: linear-gradient(to top, #121214 35%, transparent 100%);
+  --dq-tool-card-radius: 8px;
+  --dq-tool-card-bg: transparent;
+  --dq-tool-card-border: transparent;
+  --dq-welcome-title-size: var(--dq-font-size-hero);
+  --dq-welcome-chip-bg: color-mix(in srgb, var(--dq-label-primary) 4%, transparent);
+  --dq-welcome-chip-border: color-mix(in srgb, var(--dq-label-primary) 10%, transparent);
+  --dq-welcome-chip-hover: color-mix(in srgb, var(--dq-accent) 10%, transparent);
+
   /* Selection & scrollbar — macOS native feel */
   --dq-selection-bg: rgba(10, 132, 255, 0.28);
   --dq-selection-color: inherit;
@@ -230,6 +271,7 @@ html.dark {
 }
 
 /* ─── Base typography ─── */
+html.dq-mac,
 html.dq-mac-ui {
   font-family: var(--dq-font-sans);
   font-size: var(--dq-font-size-body);
@@ -242,6 +284,7 @@ html.dq-mac-ui {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.dq-mac body,
 html.dq-mac-ui body {
   background-color: var(--dq-bg-page);
 }
@@ -282,9 +325,8 @@ html.dq-mac-ui ::-webkit-scrollbar-thumb:hover,
 
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
-  :root,
-  html.dark,
-  .dq-mac-ui {
+  html.dq-mac,
+  html.dq-mac-ui {
     --dq-transition-hover: none;
     --dq-transition-field: none;
     --dq-transition-active: none;
@@ -295,9 +337,8 @@ html.dq-mac-ui ::-webkit-scrollbar-thumb:hover,
 
 /* ─── High contrast mode ─── */
 @media (prefers-contrast: high) {
-  :root,
-  html.dark,
-  .dq-mac-ui {
+  html.dq-mac,
+  html.dq-mac-ui {
     --dq-label-primary: rgba(255, 255, 255, 0.98);
     --dq-label-secondary: rgba(255, 255, 255, 0.85);
     --dq-label-tertiary: rgba(255, 255, 255, 0.65);

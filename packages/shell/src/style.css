@@ -572,19 +572,20 @@
 /* ── Tool card (Cursor-like scannable rows) ── */
 
 .dq-tool-card {
-  border-radius: 8px;
-  border: 1px solid color-mix(in srgb, var(--dq-label-primary) 8%, transparent);
-  background: color-mix(in srgb, var(--dq-label-primary) 2.5%, transparent);
+  border-radius: var(--dq-tool-card-radius, var(--dq-radius-control-sm));
+  border: 1px solid var(--dq-tool-card-border);
+  background: var(--dq-tool-card-bg);
   overflow: hidden;
+  transition: border-color var(--dq-msg-enter-duration, 0.22s) var(--dq-msg-enter-ease, ease);
 }
 
 .dq-tool-card.is-running,
 .dq-tool-card.is-awaiting {
-  border-color: color-mix(in srgb, var(--dq-accent) 28%, transparent);
+  border-color: transparent;
 }
 
 .dq-tool-card.is-error {
-  border-color: color-mix(in srgb, var(--dq-danger) 35%, transparent);
+  border-color: color-mix(in srgb, var(--dq-danger) 22%, transparent);
 }
 
 .dq-tool-card.is-cancelled {
@@ -594,7 +595,7 @@
 .dq-tool-card__header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--dq-space-sm);
   width: 100%;
   min-height: 32px;
   padding: 6px 10px;
@@ -607,13 +608,13 @@
 }
 
 .dq-tool-card__header:hover {
-  background: color-mix(in srgb, var(--dq-label-primary) 4%, transparent);
+  background: var(--dq-fill-on-glass-hover, color-mix(in srgb, var(--dq-label-primary) 4%, transparent));
 }
 
 .dq-tool-card__name {
   flex-shrink: 0;
   font-family: var(--dq-font-mono);
-  font-size: var(--dq-font-size-footnote);
+  font-size: var(--dq-font-size-body);
   font-weight: 600;
   color: var(--dq-label-primary);
 }
@@ -623,8 +624,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: var(--dq-font-size-caption);
-  color: var(--dq-label-tertiary);
+  font-size: var(--dq-font-size-body);
+  color: var(--dq-label-secondary);
 }
 
 .dq-tool-card__spacer {
@@ -635,7 +636,7 @@
 .dq-tool-card__badge {
   flex-shrink: 0;
   font-size: var(--dq-font-size-caption);
-  color: var(--dq-label-tertiary);
+  color: var(--dq-label-secondary);
 }
 
 .dq-tool-card__badge.is-running,
@@ -648,7 +649,7 @@
 }
 
 .dq-tool-card__badge.is-completed {
-  color: var(--dq-success);
+  color: var(--dq-label-quaternary);
 }
 
 .dq-tool-card__link {
@@ -661,7 +662,7 @@
 .dq-tool-card__chevron {
   flex-shrink: 0;
   color: var(--dq-label-quaternary);
-  transition: transform 0.15s ease;
+  transition: transform var(--dq-msg-enter-duration, 0.22s) var(--dq-msg-enter-ease, ease);
 }
 
 .dq-tool-card__chevron.is-open {
@@ -679,11 +680,11 @@
 
 .dq-tool-card__body {
   padding: 0 10px 10px;
-  border-top: 1px solid color-mix(in srgb, var(--dq-label-primary) 6%, transparent);
+  border-top: 1px solid var(--dq-tool-card-border);
 }
 
 .dq-tool-card__section {
-  margin-top: 8px;
+  margin-top: var(--dq-space-sm);
 }
 
 .dq-tool-card__section-label {
@@ -726,9 +727,9 @@
 .dq-tool-card__code {
   margin: 0;
   max-height: 220px;
-  padding: 8px 10px;
+  padding: var(--dq-space-sm) 10px;
   overflow: auto;
-  border-radius: 6px;
+  border-radius: var(--dq-code-radius, var(--dq-radius-control-sm));
   border: 1px solid var(--dq-code-border, transparent);
   background: var(--dq-code-bg, color-mix(in srgb, var(--dq-label-primary) 6%, transparent));
   font-family: var(--dq-font-mono);
@@ -787,7 +788,7 @@
 
 .dq-pill-tabs__tab.is-active {
   color: var(--dq-label-primary);
-  background: var(--dq-surface-list-selected);
+  background: var(--dq-accent-tint, var(--dq-surface-list-selected));
 }
 
 .dq-pill-tabs__icon {
@@ -801,7 +802,7 @@
   border-radius: 999px;
   background: var(--dq-fill-muted-control);
   color: var(--dq-label-secondary);
-  font-size: 10px;
+  font-size: var(--dq-font-size-caption);
   font-weight: 600;
   line-height: 16px;
   text-align: center;
