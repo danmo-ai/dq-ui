@@ -1,12 +1,12 @@
 /**
- * DanQing typography — 4 semantic steps (macOS-dense, theme-invariant).
+ * DanQing typography — 4 semantic steps (comfortable dense, theme-invariant).
  *
  * Base: 16px (browser default) so 1rem == 16px.
  *
  *   caption  12px  badges / kbd / timestamps / hints
- *   body     13px  default UI + chat (chrome, tools, forms, stream)
- *   prose    13px  alias of body — no chat/UI size jump
- *   title    15px  one page/session title per view
+ *   body     14px  default UI + chat (chrome, tools, forms, stream)
+ *   prose    14px  alias of body — no chat/UI size jump
+ *   title    16px  one page/session title per view
  *
  * Theme-invariant: palette CSS must NOT override --dq-font-size-*.
  * Themes may change font-family / color / weight, never the scale.
@@ -17,22 +17,22 @@
 :root,
 html {
   /* ── Numeric scale (implementation detail) ── */
-  --dq-font-size-2xs: 0.75rem;    /* 12px */
-  --dq-font-size-xs:  0.75rem;    /* 12px */
-  --dq-font-size-sm:  0.8125rem;  /* 13px */
-  --dq-font-size-base:0.8125rem;  /* 13px */
-  --dq-font-size-md:  0.8125rem;  /* 13px */
-  --dq-font-size-lg:  0.8125rem;  /* 13px */
-  --dq-font-size-xl:  0.9375rem;  /* 15px */
-  --dq-font-size-2xl: 0.9375rem;  /* 15px */
-  --dq-font-size-3xl: 0.9375rem;  /* 15px */
-  --dq-font-size-4xl: 0.9375rem;  /* 15px */
+  --dq-font-size-2xs: 0.75rem;   /* 12px */
+  --dq-font-size-xs:  0.75rem;   /* 12px */
+  --dq-font-size-sm:  0.875rem;  /* 14px */
+  --dq-font-size-base:0.875rem;  /* 14px */
+  --dq-font-size-md:  0.875rem;  /* 14px */
+  --dq-font-size-lg:  0.875rem;  /* 14px */
+  --dq-font-size-xl:  1rem;      /* 16px */
+  --dq-font-size-2xl: 1rem;      /* 16px */
+  --dq-font-size-3xl: 1rem;      /* 16px */
+  --dq-font-size-4xl: 1rem;      /* 16px */
 
   /* ── Canonical 4 steps ── */
-  --dq-font-size-caption: 0.75rem;   /* 12px */
-  --dq-font-size-body:    0.8125rem; /* 13px */
-  --dq-font-size-prose:   0.8125rem; /* 13px — same as body */
-  --dq-font-size-title:   0.9375rem; /* 15px */
+  --dq-font-size-caption: 0.75rem;  /* 12px */
+  --dq-font-size-body:    0.875rem; /* 14px */
+  --dq-font-size-prose:   0.875rem; /* 14px — same as body */
+  --dq-font-size-title:   1rem;     /* 16px */
 
   /* ── Legacy aliases → collapse into the 4 steps ── */
   --dq-font-size-footnote:  var(--dq-font-size-caption);
