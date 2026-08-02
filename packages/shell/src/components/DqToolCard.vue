@@ -56,15 +56,16 @@ const rootClass = computed(() => [
       <span class="dq-status-dot" :class="`dq-status-dot--${dotStatus}`" aria-hidden="true" />
       <span class="dq-tool-card__name">{{ name }}</span>
       <span v-if="!expanded && summary" class="dq-tool-card__summary">{{ summary }}</span>
-      <span class="dq-tool-card__spacer" />
-      <span v-if="awaiting && awaitingLabel" class="dq-tool-card__badge is-awaiting">{{ awaitingLabel }}</span>
-      <span v-else-if="statusLabel" class="dq-tool-card__badge" :class="`is-${status}`">{{ statusLabel }}</span>
-      <span
-        v-if="showLink && linkLabel"
-        class="dq-tool-card__link"
-        @click.stop="emit('link')"
-      >{{ linkLabel }}</span>
-      <ChevronDown class="dq-tool-card__chevron" :class="{ 'is-open': expanded }" :size="14" />
+      <span class="dq-tool-card__trail">
+        <span v-if="awaiting && awaitingLabel" class="dq-tool-card__badge is-awaiting">{{ awaitingLabel }}</span>
+        <span v-else-if="statusLabel" class="dq-tool-card__badge" :class="`is-${status}`">{{ statusLabel }}</span>
+        <span
+          v-if="showLink && linkLabel"
+          class="dq-tool-card__link"
+          @click.stop="emit('link')"
+        >{{ linkLabel }}</span>
+        <ChevronDown class="dq-tool-card__chevron" :class="{ 'is-open': expanded }" :size="14" />
+      </span>
     </button>
 
     <div v-if="!expanded && preview && status !== 'running'" class="dq-tool-card__preview">

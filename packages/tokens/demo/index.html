@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="dq-linear-dark">
+<html lang="zh-CN" class="dq-mac dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DanQing UI — Theme Gallery</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link id="theme-css" rel="stylesheet" href="../src/dq-linear-dark.css">
+  <link id="theme-css" rel="stylesheet" href="../src/dq-mac.css">
+  <link id="recipe-css" rel="stylesheet" href="../src/dq-recipe-dark.css">
   <link rel="stylesheet" href="../src/dq-glass.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,6 +16,9 @@
       font-family: var(--dq-font-sans);
       font-size: var(--dq-font-size-secondary);
       line-height: var(--dq-line-height-relaxed);
+      background-color: var(--dq-bg-page);
+      background-image: var(--dq-bg-page-glow);
+      background-repeat: no-repeat;
     }
 
     .layout {
@@ -26,21 +27,14 @@
       padding: 32px 24px 64px;
     }
 
-    .hero {
-      margin-bottom: 28px;
-    }
-
+    .hero { margin-bottom: 28px; }
     .hero h1 {
       font-size: var(--dq-font-size-page);
       font-weight: 700;
       letter-spacing: var(--dq-tracking-tighter);
       margin-bottom: 8px;
     }
-
-    .hero p {
-      color: var(--dq-label-secondary);
-      max-width: 640px;
-    }
+    .hero p { color: var(--dq-label-secondary); max-width: 640px; }
 
     .toolbar {
       display: flex;
@@ -62,12 +56,10 @@
       cursor: pointer;
       transition: var(--dq-transition-hover);
     }
-
     .theme-btn:hover {
       background: var(--dq-fill-secondary);
       color: var(--dq-label-primary);
     }
-
     .theme-btn.is-active {
       background: var(--dq-accent-surface);
       border-color: var(--dq-accent-surface-border);
@@ -78,22 +70,20 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 16px;
-      margin-bottom: 24px;
     }
 
     .panel {
-      border: 1px solid var(--dq-border);
-      border-radius: var(--dq-radius-group);
-      background: var(--dq-bg-elevated);
       padding: 16px;
+      border-radius: var(--dq-radius-group);
+      border: 1px solid var(--dq-border-hairline);
+      background: var(--dq-glass-panel-bg);
+      backdrop-filter: var(--dq-glass-blur);
+      -webkit-backdrop-filter: var(--dq-glass-blur);
+      box-shadow: var(--dq-shadow-glass);
     }
-
     .panel h2 {
-      font-size: var(--dq-font-size-footnote);
+      font-size: var(--dq-font-size-body);
       font-weight: 600;
-      letter-spacing: var(--dq-tracking-wider);
-      text-transform: uppercase;
-      color: var(--dq-label-tertiary);
       margin-bottom: 12px;
     }
 
@@ -101,154 +91,133 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-
     .swatch {
       width: 28px;
       height: 28px;
-      border-radius: 6px;
-      border: 1px solid var(--dq-border);
-      flex-shrink: 0;
+      border-radius: 8px;
+      border: 1px solid var(--dq-border-hairline);
     }
-
     .swatch-label {
-      font-size: var(--dq-font-size-footnote);
-      color: var(--dq-label-secondary);
       font-family: var(--dq-font-mono);
+      font-size: 12px;
+      color: var(--dq-label-tertiary);
     }
 
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
+    .btn-row, .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
     .demo-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       height: 32px;
-      padding: 0 14px;
+      padding: 0 12px;
       border-radius: var(--dq-radius-button);
-      border: 1px solid transparent;
-      font: inherit;
-      font-size: var(--dq-font-size-body);
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--dq-transition-hover), var(--dq-transition-active);
-    }
-
-    .demo-btn:active { transform: scale(0.97); }
-
-    .demo-btn--default {
+      border: 1px solid var(--dq-border);
       background: var(--dq-fill-control);
       color: var(--dq-label-primary);
-      border-color: var(--dq-border);
+      font: inherit;
+      cursor: pointer;
     }
-
     .demo-btn--primary {
       background: var(--dq-accent);
-      color: #fff;
+      border-color: transparent;
+      color: var(--dq-on-accent);
     }
-
     .demo-btn--ghost {
       background: transparent;
-      color: var(--dq-label-secondary);
     }
-
     .demo-input {
       width: 100%;
-      min-height: 36px;
-      padding: 8px 12px;
+      height: 36px;
+      padding: 0 12px;
       border-radius: var(--dq-radius-input);
-      border: 1px solid var(--dq-border);
+      border: 1px solid var(--dq-glass-control-border);
       background: var(--dq-glass-control-bg);
       color: var(--dq-label-primary);
       font: inherit;
-      font-size: var(--dq-font-size-body);
-      transition: var(--dq-transition-field);
     }
-
     .demo-input:focus {
       outline: none;
-      border-color: var(--dq-accent);
+      border-color: var(--dq-glass-control-border-focus);
       box-shadow: var(--dq-focus-ring);
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
-      padding: 2px 8px;
-      border-radius: var(--dq-radius-control-sm);
-      font-size: var(--dq-font-size-caption);
+      height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      font-size: 12px;
       font-weight: 500;
-      background: var(--dq-fill-secondary);
-      color: var(--dq-label-secondary);
     }
-
     .tag--success {
       color: var(--dq-success);
       background: var(--dq-success-surface);
       border: 1px solid var(--dq-success-surface-border);
     }
-
     .tag--warning {
       color: var(--dq-warning);
       background: var(--dq-warning-surface);
       border: 1px solid var(--dq-warning-surface-border);
     }
-
     .tag--danger {
       color: var(--dq-danger);
       background: var(--dq-danger-surface);
       border: 1px solid var(--dq-danger-surface-border);
     }
-
     .tag--accent {
       color: var(--dq-accent);
       background: var(--dq-accent-surface);
       border: 1px solid var(--dq-accent-surface-border);
     }
 
-    .glass-demo {
+    .glass-demo { margin-top: 8px; padding: 14px; }
+    .shell-demo {
+      display: grid;
+      grid-template-columns: 120px 1fr 120px;
+      min-height: 120px;
       margin-top: 8px;
-      padding: 14px;
+      border: 1px solid var(--dq-shell-divider);
+      overflow: hidden;
     }
-
-    .links {
-      margin-top: 8px;
-      font-size: var(--dq-font-size-body);
+    .shell-demo__side {
+      background: var(--dq-shell-sidebar-bg);
+      backdrop-filter: var(--dq-shell-sidebar-blur);
+      -webkit-backdrop-filter: var(--dq-shell-sidebar-blur);
+      border-right: 1px solid var(--dq-shell-sidebar-border);
+      padding: 12px;
+      font-size: 12px;
       color: var(--dq-label-secondary);
     }
-
-    .links a {
-      color: var(--dq-accent);
-      text-decoration: none;
+    .shell-demo__stream {
+      background: var(--dq-shell-stream-bg);
+      padding: 12px;
+      font-size: 12px;
+      color: var(--dq-label-tertiary);
     }
-
-    .links a:hover { text-decoration: underline; }
+    .shell-demo__panel {
+      background: var(--dq-shell-panel-bg);
+      backdrop-filter: var(--dq-shell-panel-blur);
+      -webkit-backdrop-filter: var(--dq-shell-panel-blur);
+      border-left: 1px solid var(--dq-shell-panel-border);
+      padding: 12px;
+      font-size: 12px;
+      color: var(--dq-label-secondary);
+    }
   </style>
 </head>
 <body>
   <div class="layout">
     <header class="hero">
       <h1 id="hero-title">DanQing UI Themes</h1>
-      <p id="hero-desc">
-        Linear Dark productivity theme — indigo accent, cool depth layers.
-      </p>
+      <p id="hero-desc">macOS 26 Liquid Glass · system blue dark</p>
     </header>
 
     <div class="toolbar">
-      <button class="theme-btn is-active" data-theme="linearDark" type="button">Linear Dark</button>
-      <button class="theme-btn" data-theme="shadcnDark" type="button">shadcn/ui Dark</button>
-      <button class="theme-btn" data-theme="chinaRedDark" type="button">China Red Dark</button>
+      <button class="theme-btn is-active" data-theme="mac" type="button">macOS</button>
+      <button class="theme-btn" data-theme="macLight" type="button">macOS Light</button>
+      <button class="theme-btn" data-theme="tokyoNight" type="button">Tokyo Night</button>
+      <button class="theme-btn" data-theme="nordDark" type="button">Nord Dark</button>
+      <button class="theme-btn" data-theme="minimalLight" type="button">Minimal Light</button>
     </div>
 
     <div class="grid">
@@ -263,7 +232,7 @@
       <section class="panel">
         <h2>Buttons</h2>
         <div class="btn-row">
-          <button class="demo-btn demo-btn--default" type="button">Default</button>
+          <button class="demo-btn" type="button">Default</button>
           <button class="demo-btn demo-btn--primary" type="button">Primary</button>
           <button class="demo-btn demo-btn--ghost" type="button">Ghost</button>
         </div>
@@ -285,46 +254,70 @@
       </section>
     </div>
 
-    <section class="panel">
-      <h2>Glass Panel</h2>
-      <div class="dq-glass--panel glass-demo">
-        Popover / dialog surface using <code>.dq-glass--panel</code> utilities from
-        <code>dq-glass.css</code>.
+    <section class="panel" style="margin-top: 16px">
+      <h2>Shell (soft glass)</h2>
+      <div class="shell-demo">
+        <div class="shell-demo__side">Sidebar</div>
+        <div class="shell-demo__stream">Stream canvas</div>
+        <div class="shell-demo__panel">Panel</div>
       </div>
     </section>
 
-    <p class="links">
-      Full layouts:
-      <a href="./linear-dark.html">Linear Dark demo</a> ·
-      <a href="./shadcn-dark.html">shadcn/ui Dark demo</a> ·
-      <a href="./china-red-dark.html">China Red Dark demo</a>
-    </p>
+    <section class="panel" style="margin-top: 16px">
+      <h2>Glass Panel</h2>
+      <div class="dq-glass--panel glass-demo">
+        Popover / dialog surface using <code>.dq-glass--panel</code>.
+      </div>
+    </section>
   </div>
 
   <script type="module">
     const THEMES = {
-      linearDark: {
-        className: 'dq-linear-dark',
-        css: '../src/dq-linear-dark.css',
-        title: 'DanQing UI Themes',
-        desc: 'Linear Dark productivity theme — indigo accent, cool depth layers.',
+      mac: {
+        className: 'dq-mac',
+        dark: true,
+        css: '../src/dq-mac.css',
+        recipe: '../src/dq-recipe-dark.css',
+        title: 'macOS',
+        desc: 'macOS 26 Liquid Glass · system blue dark',
       },
-      chinaRedDark: {
-        className: 'dq-china-red-dark',
-        css: '../src/dq-china-red-dark.css',
-        title: '丹青 UI 主题',
-        desc: '中国红暗黑主题 — 玄黑为底，朱砂为韵。',
+      macLight: {
+        className: 'dq-mac-light',
+        dark: false,
+        css: '../src/dq-mac-light.css',
+        recipe: '../src/dq-recipe-light.css',
+        title: 'macOS Light',
+        desc: 'macOS 26 Liquid Glass · system blue light',
       },
-      shadcnDark: {
-        className: 'dq-shadcn-dark',
-        css: '../src/dq-shadcn-dark.css',
-        title: 'DanQing UI Themes',
-        desc: 'Zinc dark — near-white primary actions, minimal borders.',
+      tokyoNight: {
+        className: 'dq-tokyo-night',
+        dark: true,
+        css: '../src/dq-tokyo-night.css',
+        recipe: '../src/dq-recipe-dark.css',
+        title: 'Tokyo Night',
+        desc: 'macOS 26 Liquid Glass · cool navy accent',
+      },
+      nordDark: {
+        className: 'dq-nord-dark',
+        dark: true,
+        css: '../src/dq-nord-dark.css',
+        recipe: '../src/dq-recipe-dark.css',
+        title: 'Nord Dark',
+        desc: 'macOS 26 Liquid Glass · frost accent',
+      },
+      minimalLight: {
+        className: 'dq-minimal-light',
+        dark: false,
+        css: '../src/dq-minimal-light.css',
+        recipe: '../src/dq-recipe-light.css',
+        title: 'Minimal Light',
+        desc: 'macOS 26 Liquid Glass · paper white',
       },
     };
 
     const html = document.documentElement;
     const themeCss = document.getElementById('theme-css');
+    const recipeCss = document.getElementById('recipe-css');
     const buttons = document.querySelectorAll('.theme-btn');
 
     function applyTheme(id) {
@@ -332,8 +325,10 @@
       if (!theme) return;
 
       Object.values(THEMES).forEach((entry) => html.classList.remove(entry.className));
+      html.classList.toggle('dark', theme.dark);
       html.classList.add(theme.className);
       themeCss.href = theme.css;
+      recipeCss.href = theme.recipe;
 
       document.getElementById('hero-title').textContent = theme.title;
       document.getElementById('hero-desc').textContent = theme.desc;
@@ -349,7 +344,8 @@
       btn.addEventListener('click', () => applyTheme(btn.dataset.theme));
     });
 
-    applyTheme(localStorage.getItem('dq-demo-theme') || 'linearDark');
+    const stored = localStorage.getItem('dq-demo-theme');
+    applyTheme(stored && THEMES[stored] ? stored : 'mac');
   </script>
 </body>
 </html>

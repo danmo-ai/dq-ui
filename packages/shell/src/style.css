@@ -595,10 +595,10 @@
 .dq-tool-card__header {
   display: flex;
   align-items: center;
-  gap: var(--dq-space-sm);
+  gap: 6px;
   width: 100%;
-  min-height: 32px;
-  padding: 6px 10px;
+  min-height: 28px;
+  padding: 4px 8px;
   border: none;
   background: transparent;
   color: inherit;
@@ -620,7 +620,9 @@
 }
 
 .dq-tool-card__summary {
+  flex: 0 1 auto;
   min-width: 0;
+  max-width: min(100%, 48ch);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -628,9 +630,12 @@
   color: var(--dq-label-secondary);
 }
 
-.dq-tool-card__spacer {
-  flex: 1 1 auto;
-  min-width: 4px;
+/* Trail glued after name/summary — no far-right spacer gap */
+.dq-tool-card__trail {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 .dq-tool-card__badge {

@@ -60,6 +60,7 @@
 }
 
 .dq-glass--composer {
+  /* Flat frosted fill — no vertical wash / no second shadow ring */
   background: var(--dq-glass-floating-bar-bg, var(--dq-glass-panel-bg));
   border: 1px solid var(--dq-composer-border, var(--dq-glass-border));
   border-radius: var(--dq-composer-radius, var(--dq-radius-menu));

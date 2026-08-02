@@ -1,14 +1,6 @@
 /**
- * DanQing Tokyo Night theme — neon cyberpunk dark aesthetic.
- *
- * Design philosophy:
- * - Tokyo Night Storm palette: deep navy base with vibrant neon accents
- * - Blue-purple accent (#7aa2f7) for primary actions
- * - High contrast text with cool undertones
- * - Neon glow effects for status indicators
- * - Inspired by the popular Tokyo Night VSCode theme
- *
- * Usage: Add `class="dq-tokyo-night"` on <html> or <body>.
+ * DanQing Tokyo Night — cool navy accent on macOS 26 Liquid Glass materials.
+ * Shell/glass: import dq-recipe-dark.css after this file.
  */
 @import url('./dq-typography.css');
 
@@ -24,10 +16,12 @@ html.dq-tokyo-night,
   --dq-accent-tint: rgba(122, 162, 247, 0.14);
   --dq-accent-tint-strong: rgba(122, 162, 247, 0.22);
 
+  /* System UI stack only — no Inter/web fonts (CJK + Latin mismatch). */
   --dq-font-sans:
-    'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', ui-sans-serif, system-ui,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-  --dq-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', ui-sans-serif, system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    sans-serif;
+  --dq-font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
   --dq-font-weight-medium: 500;
 
   --dq-material-chrome: #1a1b26;
@@ -64,13 +58,6 @@ html.dq-tokyo-night,
   --dq-separator-strong: rgba(65, 72, 104, 0.60);
   --dq-separator-light: rgba(65, 72, 104, 0.36);
 
-  --dq-glass-bar-bg: rgba(26, 27, 38, 0.80);
-  --dq-glass-bar-bg-strong: rgba(26, 27, 38, 0.90);
-  --dq-glass-sidebar-bg: rgba(26, 27, 38, 0.74);
-  --dq-glass-popover-bg: rgba(36, 40, 59, 0.93);
-  --dq-glass-grouped-bg: rgba(22, 22, 30, 0.86);
-  --dq-glass-grouped-bg-solid: var(--dq-bg-base);
-  --dq-glass-panel-bg: rgba(36, 40, 59, 0.95);
   --dq-glass-control-bg: transparent;
   --dq-glass-control-bg-hover: color-mix(in srgb, var(--dq-label-primary) 4%, transparent);
   --dq-glass-control-bg-focus: color-mix(in srgb, var(--dq-label-primary) 6%, transparent);
@@ -79,9 +66,6 @@ html.dq-tokyo-night,
   --dq-glass-control-border-focus: color-mix(in srgb, var(--dq-accent) 65%, var(--dq-glass-control-border));
   --dq-glass-control-focus-ring: none;
   --dq-glass-control-bg-solid: var(--dq-fill-secondary);
-  --dq-glass-tooltip-bg: rgba(26, 27, 38, 0.96);
-  --dq-glass-scrim: rgba(0, 0, 0, 0.42);
-  --dq-glass-floating-bar-bg: rgba(36, 40, 59, 0.95);
 
   --dq-surface-inset: rgba(192, 202, 245, 0.03);
   --dq-surface-inset-hover: rgba(192, 202, 245, 0.06);
@@ -150,26 +134,6 @@ html.dq-tokyo-night,
   --dq-warning-highlight: rgba(224, 175, 104, 0.16);
   --dq-lightbox-info-bg: rgba(26, 27, 38, 0.90);
 
-  --dq-glass-border: var(--dq-border-hairline);
-  --dq-glass-border-strong: rgba(192, 202, 245, 0.12);
-  --dq-glass-highlight: rgba(122, 162, 247, 0.04);
-
-  --dq-glass-blur: saturate(190%) blur(20px);
-  --dq-glass-blur-light: saturate(190%) blur(12px);
-  --dq-glass-blur-heavy: saturate(190%) blur(24px);
-
-  --dq-fill-on-glass: rgba(192, 202, 245, 0.06);
-  --dq-fill-on-glass-hover: rgba(192, 202, 245, 0.10);
-  --dq-fill-on-glass-pressed: rgba(192, 202, 245, 0.14);
-  --dq-fill-on-glass-subtle: rgba(192, 202, 245, 0.04);
-
-  --dq-bg-page-glow: radial-gradient(
-    ellipse 130% 220px at 50% -4%,
-    rgba(122, 162, 247, 0.05) 0%,
-    rgba(125, 207, 255, 0.02) 30%,
-    transparent 58%
-  );
-
   --dq-radius-group: 12px;
   --dq-radius-control: 10px;
   --dq-radius-control-sm: 8px;
@@ -221,25 +185,11 @@ html.dq-tokyo-night,
 
   --dq-row-gutter: 16px;
 
-  /* ── Shell / Chat surfaces (theme-owned; products must not override) ── */
-  --dq-shell-sidebar-bg: var(--dq-material-chrome, var(--dq-bg-base));
-  --dq-shell-sidebar-border: var(--dq-border-hairline, var(--dq-border-subtle));
-  --dq-shell-sidebar-blur: none;
-  --dq-shell-panel-bg: var(--dq-material-chrome, var(--dq-bg-base));
-  --dq-shell-panel-border: var(--dq-border-hairline, var(--dq-border-subtle));
-  --dq-shell-panel-blur: none;
-  --dq-shell-stream-bg: var(--dq-bg-page);
-  --dq-shell-header-bg: transparent;
-  --dq-shell-header-blur: none;
-  --dq-shell-divider: var(--dq-border-hairline, var(--dq-border-subtle));
-  --dq-shell-rail-width-collapsed: 44px;
-  --dq-shell-radius: 0px;
-  --dq-shell-gap: 0px;
-  --dq-shell-shadow: none;
-  --dq-chat-column-max: 720px;
+  /* Shell / glass / composer materials: dq-recipe-dark.css */
+  --dq-chat-column-max: 920px;
   --dq-chat-gutter: 28px;
-  --dq-chat-turn-gap: 20px;
-  --dq-chat-block-gap: 10px;
+  --dq-chat-turn-gap: 14px;
+  --dq-chat-block-gap: 4px;
   --dq-msg-user-bg: color-mix(in srgb, var(--dq-accent) 22%, transparent);
   --dq-msg-user-border: color-mix(in srgb, var(--dq-accent) 28%, transparent);
   --dq-msg-user-fg: var(--dq-label-primary);
@@ -250,12 +200,6 @@ html.dq-tokyo-night,
   --dq-msg-agent-pad-y: 2px;
   --dq-msg-enter-duration: 0.18s;
   --dq-msg-enter-ease: ease;
-  --dq-composer-radius: 14px;
-  --dq-composer-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
-  --dq-composer-border: var(--dq-border-strong, var(--dq-border));
-  --dq-composer-pad: 12px;
-  --dq-composer-max-height: 240px;
-  --dq-composer-fade: linear-gradient(to top, var(--dq-shell-stream-bg) 30%, transparent 100%);
   --dq-tool-card-radius: 10px;
   --dq-tool-card-bg: color-mix(in srgb, var(--dq-label-primary) 3%, transparent);
   --dq-tool-card-border: color-mix(in srgb, var(--dq-label-primary) 7%, transparent);
@@ -407,13 +351,15 @@ html.dq-tokyo-night ::-webkit-scrollbar-thumb:hover,
   html.dq-tokyo-night .dq-shadcn-topbar,
   .dq-tokyo-night .dq-glass--bar,
   .dq-tokyo-night .dq-glass--bar-strong,
-  .dq-tokyo-night .dq-shadcn-topbar { background: var(--dq-glass-bar-bg-strong); }
+  .dq-tokyo-night .dq-shadcn-topbar { background: var(--dq-material-chrome); }
   html.dq-tokyo-night .dq-glass--sidebar,
   html.dq-tokyo-night .dq-shadcn-sidebar,
   .dq-tokyo-night .dq-glass--sidebar,
-  .dq-tokyo-night .dq-shadcn-sidebar { background: var(--dq-bg-base); }
+  .dq-tokyo-night .dq-shadcn-sidebar { background: var(--dq-material-chrome); }
+  html.dq-tokyo-night .dq-glass--grouped,
+  .dq-tokyo-night .dq-glass--grouped { background: var(--dq-material-grouped); }
   html.dq-tokyo-night .dq-glass--popover,
   html.dq-tokyo-night .dq-glass--panel,
   .dq-tokyo-night .dq-glass--popover,
-  .dq-tokyo-night .dq-glass--panel { background: var(--dq-bg-elevated); }
+  .dq-tokyo-night .dq-glass--panel { background: var(--dq-material-elevated); }
 }

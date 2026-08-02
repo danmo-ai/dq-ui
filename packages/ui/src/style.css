@@ -462,9 +462,10 @@
   position: fixed;
   inset: 0;
   z-index: 2000;
-  background: var(--dq-overlay-medium);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+  /* Light scrim — keep stream visible so panel glass can refract it */
+  background: var(--dq-glass-scrim, var(--dq-overlay-light));
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 
 @keyframes dq-drawer-in-rtl {
@@ -494,10 +495,13 @@
   flex-direction: column;
   max-height: 100vh;
   border: 1px solid var(--dq-glass-border);
-  background: var(--dq-glass-panel-bg);
+  /* Single frost sheet — soft edge only, no heavy slab shadow */
+  background: var(--dq-glass-panel-bg, var(--dq-glass-floating-bar-bg));
   -webkit-backdrop-filter: var(--dq-glass-blur-heavy);
   backdrop-filter: var(--dq-glass-blur-heavy);
-  box-shadow: var(--dq-shadow-modal);
+  box-shadow:
+    -10px 0 32px rgba(0, 0, 0, 0.14),
+    0 1px 0 var(--dq-glass-highlight) inset;
   outline: none;
 }
 

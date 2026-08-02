@@ -3,53 +3,39 @@ export const DQ_TOKENS_VERSION = '0.1.0';
 
 /**
  * Product theme CSS entry files (relative to package root).
- * `glass` / `tauriMacos` are overlays imported after a base palette — not selectable themes.
+ * `glass` / `tauriMacos` / recipes are overlays — not selectable themes.
  */
 export const themes = {
   mac: 'dq-mac.css',
-  linearDark: 'dq-linear-dark.css',
-  chinaRedDark: 'dq-china-red-dark.css',
-  shadcnDark: 'dq-shadcn-dark.css',
-  shadcnLight: 'dq-shadcn-light.css',
-  catppuccin: 'dq-catppuccin.css',
+  macLight: 'dq-mac-light.css',
   tokyoNight: 'dq-tokyo-night.css',
-  minimalLight: 'dq-minimal-light.css',
-  dracula: 'dq-dracula.css',
   nordDark: 'dq-nord-dark.css',
-  catppuccinLatte: 'dq-catppuccin-latte.css',
-  nordLight: 'dq-nord-light.css',
-  githubLight: 'dq-github-light.css',
+  minimalLight: 'dq-minimal-light.css',
   /** Overlay utilities — import after a palette theme */
   glass: 'dq-glass.css',
+  recipeDark: 'dq-recipe-dark.css',
+  recipeLight: 'dq-recipe-light.css',
   tauriMacos: 'dq-tauri-macos.css',
 } as const;
 
 export type DqThemeId = keyof typeof themes;
 
-/** Kebab-case slug used in localStorage / Settings UI (Teams, Studio). */
+/** Kebab-case slug used in localStorage / Settings UI. */
 export type DqThemeSlug =
   | 'mac'
-  | 'linear-dark'
-  | 'china-red-dark'
-  | 'shadcn-dark'
-  | 'shadcn-light'
-  | 'catppuccin'
+  | 'mac-light'
   | 'tokyo-night'
-  | 'minimal-light'
-  | 'dracula'
   | 'nord-dark'
-  | 'catppuccin-latte'
-  | 'nord-light'
-  | 'github-light';
+  | 'minimal-light';
 
 export interface DqThemeMeta {
   /** CamelCase key matching `themes` / `applyDqTheme` */
-  id: Exclude<DqThemeId, 'glass' | 'tauriMacos'>;
+  id: Exclude<DqThemeId, 'glass' | 'recipeDark' | 'recipeLight' | 'tauriMacos'>;
   /** Kebab slug for persistence and product Settings */
   slug: DqThemeSlug;
   label: string;
   description: string;
-  /** Class added to `<html>` to activate the theme (`mac` uses `dq-mac` for explicit switching) */
+  /** Class added to `<html>` to activate the theme */
   htmlClass: string;
   /** Accent color for preview swatches */
   accent: string;
@@ -58,139 +44,72 @@ export interface DqThemeMeta {
   cssFile: string;
 }
 
-/** Catalog of selectable product themes (excludes glass / tauri overlays). */
+/** Catalog of selectable product themes (excludes overlays). */
 export const THEME_OPTIONS: readonly DqThemeMeta[] = [
   {
     id: 'mac',
     slug: 'mac',
     label: 'macOS',
-    description: 'macOS 26 Liquid Glass 原生风格',
+    description: 'macOS 26 Liquid Glass · 系统蓝暗色',
     htmlClass: 'dq-mac',
     accent: '#0a84ff',
     dark: true,
     cssFile: themes.mac,
   },
   {
-    id: 'linearDark',
-    slug: 'linear-dark',
-    label: 'Linear Dark',
-    description: 'Linear / Figma 风格深色生产力主题',
-    htmlClass: 'dq-linear-dark',
-    accent: '#6370d2',
-    dark: true,
-    cssFile: themes.linearDark,
-  },
-  {
-    id: 'chinaRedDark',
-    slug: 'china-red-dark',
-    label: 'China Red Dark',
-    description: '中国红深色主题',
-    htmlClass: 'dq-china-red-dark',
-    accent: '#C93756',
-    dark: true,
-    cssFile: themes.chinaRedDark,
-  },
-  {
-    id: 'shadcnDark',
-    slug: 'shadcn-dark',
-    label: 'shadcn/ui Dark',
-    description: 'shadcn/ui 风格 zinc 深色主题',
-    htmlClass: 'dq-shadcn-dark',
-    accent: '#fafafa',
-    dark: true,
-    cssFile: themes.shadcnDark,
-  },
-  {
-    id: 'shadcnLight',
-    slug: 'shadcn-light',
-    label: 'shadcn/ui Light',
-    description: 'shadcn/ui 风格暖白亮色主题',
-    htmlClass: 'dq-shadcn-light',
-    accent: '#18181b',
+    id: 'macLight',
+    slug: 'mac-light',
+    label: 'macOS Light',
+    description: 'macOS 26 Liquid Glass · 系统蓝亮色',
+    htmlClass: 'dq-mac-light',
+    accent: '#007aff',
     dark: false,
-    cssFile: themes.shadcnLight,
-  },
-  {
-    id: 'catppuccin',
-    slug: 'catppuccin',
-    label: 'Catppuccin Mocha',
-    description: '暖色柔和暗色主题，护眼舒适',
-    htmlClass: 'dq-catppuccin',
-    accent: '#cba6f7',
-    dark: true,
-    cssFile: themes.catppuccin,
+    cssFile: themes.macLight,
   },
   {
     id: 'tokyoNight',
     slug: 'tokyo-night',
     label: 'Tokyo Night',
-    description: '霓虹都市暗色主题，高对比度',
+    description: 'macOS 26 Liquid Glass · 冷蓝海军',
     htmlClass: 'dq-tokyo-night',
     accent: '#7aa2f7',
     dark: true,
     cssFile: themes.tokyoNight,
   },
   {
-    id: 'minimalLight',
-    slug: 'minimal-light',
-    label: 'Minimal Light',
-    description: '极简纯白亮色主题，专注编码',
-    htmlClass: 'dq-minimal-light',
-    accent: '#0066cc',
-    dark: false,
-    cssFile: themes.minimalLight,
-  },
-  {
-    id: 'dracula',
-    slug: 'dracula',
-    label: 'Dracula',
-    description: '经典暗紫开发者主题',
-    htmlClass: 'dq-dracula',
-    accent: '#bd93f9',
-    dark: true,
-    cssFile: themes.dracula,
-  },
-  {
     id: 'nordDark',
     slug: 'nord-dark',
     label: 'Nord Dark',
-    description: '北极蓝灰暗色主题，冷静沉稳',
+    description: 'macOS 26 Liquid Glass · 北极霜色',
     htmlClass: 'dq-nord-dark',
     accent: '#88c0d0',
     dark: true,
     cssFile: themes.nordDark,
   },
   {
-    id: 'catppuccinLatte',
-    slug: 'catppuccin-latte',
-    label: 'Catppuccin Latte',
-    description: '暖色柔和亮色主题，护眼舒适',
-    htmlClass: 'dq-catppuccin-latte',
-    accent: '#1e66f5',
+    id: 'minimalLight',
+    slug: 'minimal-light',
+    label: 'Minimal Light',
+    description: 'macOS 26 Liquid Glass · 极简纸白',
+    htmlClass: 'dq-minimal-light',
+    accent: '#0066cc',
     dark: false,
-    cssFile: themes.catppuccinLatte,
-  },
-  {
-    id: 'nordLight',
-    slug: 'nord-light',
-    label: 'Nord Light',
-    description: '北极冰雪亮色主题，清新明快',
-    htmlClass: 'dq-nord-light',
-    accent: '#5e81ac',
-    dark: false,
-    cssFile: themes.nordLight,
-  },
-  {
-    id: 'githubLight',
-    slug: 'github-light',
-    label: 'GitHub Light',
-    description: 'GitHub Primer 亮色主题，开发者首选',
-    htmlClass: 'dq-github-light',
-    accent: '#0969da',
-    dark: false,
-    cssFile: themes.githubLight,
+    cssFile: themes.minimalLight,
   },
 ] as const;
+
+/** Removed theme slugs → fallback for localStorage migration. */
+export const REMOVED_THEME_FALLBACKS: Readonly<Record<string, DqThemeSlug>> = {
+  'linear-dark': 'mac',
+  'china-red-dark': 'mac',
+  'shadcn-dark': 'mac',
+  catppuccin: 'mac',
+  dracula: 'mac',
+  'shadcn-light': 'mac-light',
+  'catppuccin-latte': 'mac-light',
+  'nord-light': 'mac-light',
+  'github-light': 'mac-light',
+};
 
 const SLUG_TO_META = Object.fromEntries(
   THEME_OPTIONS.map((opt) => [opt.slug, opt]),
@@ -200,41 +119,29 @@ const ID_TO_META = Object.fromEntries(
   THEME_OPTIONS.map((opt) => [opt.id, opt]),
 ) as Record<DqThemeMeta['id'], DqThemeMeta>;
 
-/** Root `<html>` class to activate a theme. Overlays return null. */
+/** Root `<html>` class to activate a theme. Overlays return null for glass. */
 export const themeRootClasses: Record<DqThemeId, string | null> = {
   mac: 'dq-mac',
-  linearDark: 'dq-linear-dark',
-  chinaRedDark: 'dq-china-red-dark',
-  shadcnDark: 'dq-shadcn-dark',
-  shadcnLight: 'dq-shadcn-light',
-  catppuccin: 'dq-catppuccin',
+  macLight: 'dq-mac-light',
   tokyoNight: 'dq-tokyo-night',
-  minimalLight: 'dq-minimal-light',
-  dracula: 'dq-dracula',
   nordDark: 'dq-nord-dark',
-  catppuccinLatte: 'dq-catppuccin-latte',
-  nordLight: 'dq-nord-light',
-  githubLight: 'dq-github-light',
+  minimalLight: 'dq-minimal-light',
   glass: null,
+  recipeDark: null,
+  recipeLight: null,
   tauriMacos: 'dq-tauri-macos',
 };
 
 /** npm import paths for theme CSS bundles. */
 export const themeImportPaths: Record<DqThemeId, string> = {
   mac: '@danqing/dq-tokens/dq-mac.css',
-  linearDark: '@danqing/dq-tokens/dq-linear-dark.css',
-  chinaRedDark: '@danqing/dq-tokens/dq-china-red-dark.css',
-  shadcnDark: '@danqing/dq-tokens/dq-shadcn-dark.css',
-  shadcnLight: '@danqing/dq-tokens/dq-shadcn-light.css',
-  catppuccin: '@danqing/dq-tokens/dq-catppuccin.css',
+  macLight: '@danqing/dq-tokens/dq-mac-light.css',
   tokyoNight: '@danqing/dq-tokens/dq-tokyo-night.css',
-  minimalLight: '@danqing/dq-tokens/dq-minimal-light.css',
-  dracula: '@danqing/dq-tokens/dq-dracula.css',
   nordDark: '@danqing/dq-tokens/dq-nord-dark.css',
-  catppuccinLatte: '@danqing/dq-tokens/dq-catppuccin-latte.css',
-  nordLight: '@danqing/dq-tokens/dq-nord-light.css',
-  githubLight: '@danqing/dq-tokens/dq-github-light.css',
+  minimalLight: '@danqing/dq-tokens/dq-minimal-light.css',
   glass: '@danqing/dq-tokens/dq-glass.css',
+  recipeDark: '@danqing/dq-tokens/dq-recipe-dark.css',
+  recipeLight: '@danqing/dq-tokens/dq-recipe-light.css',
   tauriMacos: '@danqing/dq-tokens/dq-tauri-macos.css',
 };
 
@@ -256,8 +163,8 @@ function resolveThemeMeta(
 
 /**
  * Apply a DanQing theme on `<html>` (browser / Tauri webview).
- * Accepts camelCase ids (`shadcnLight`) or kebab slugs (`shadcn-light`).
- * Toggles `dark` for product themes; overlays (`glass`, `tauriMacos`) only add their class.
+ * Accepts camelCase ids (`macLight`) or kebab slugs (`mac-light`).
+ * Toggles `dark` for product themes; overlays only add their class when applicable.
  */
 export function applyDqTheme(
   themeIdOrSlug: DqThemeId | DqThemeSlug,
@@ -271,8 +178,7 @@ export function applyDqTheme(
     return;
   }
 
-  // Overlay-only ids
-  if (themeIdOrSlug === 'glass') {
+  if (themeIdOrSlug === 'glass' || themeIdOrSlug === 'recipeDark' || themeIdOrSlug === 'recipeLight') {
     return;
   }
   if (themeIdOrSlug === 'tauriMacos') {
@@ -289,4 +195,15 @@ export function getDqThemeMeta(
 
 export function isDqThemeSlug(value: string): value is DqThemeSlug {
   return value in SLUG_TO_META;
+}
+
+/** Resolve a stored slug, migrating removed themes to curated fallbacks. */
+export function resolveDqThemeSlug(value: string | null | undefined): DqThemeSlug {
+  if (value && isDqThemeSlug(value)) {
+    return value;
+  }
+  if (value && value in REMOVED_THEME_FALLBACKS) {
+    return REMOVED_THEME_FALLBACKS[value];
+  }
+  return 'mac';
 }

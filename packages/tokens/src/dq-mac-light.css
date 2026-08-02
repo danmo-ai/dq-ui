@@ -1,20 +1,20 @@
 /**
- * DanQing Minimal Light — paper-white accent on macOS 26 Liquid Glass materials.
- * Shell/glass: import dq-recipe-light.css after this file.
+ * DanQing macOS Light — system-blue Tahoe light palette.
+ * Shell/glass materials: import dq-recipe-light.css after this file.
  */
 @import url('./dq-typography.css');
 
-html.dq-minimal-light,
-.dq-minimal-light {
+html.dq-mac-light,
+.dq-mac-light {
   accent-color: var(--dq-accent);
 
-  --dq-accent: #0066cc;
+  --dq-accent: #007aff;
 
   --dq-on-accent: #ffffff;
-  --dq-accent-hover: #0052a3;
-  --dq-accent-muted: #4d94e0;
-  --dq-accent-tint: rgba(0, 102, 204, 0.08);
-  --dq-accent-tint-strong: rgba(0, 102, 204, 0.14);
+  --dq-accent-hover: #0066d6;
+  --dq-accent-muted: #409cff;
+  --dq-accent-tint: rgba(0, 122, 255, 0.08);
+  --dq-accent-tint-strong: rgba(0, 122, 255, 0.14);
 
   /* System UI stack only — no Inter/web fonts (CJK + Latin mismatch). */
   --dq-font-sans:
@@ -26,7 +26,7 @@ html.dq-minimal-light,
 
   --dq-material-chrome: #ffffff;
   --dq-material-elevated: #f5f5f5;
-  --dq-material-grouped: #fafafa;
+  --dq-material-grouped: #f5f5f7;
 
   /* Page canvas overridden by dq-recipe-light (cool gray for glass contrast) */
   --dq-bg-page: #e8e8ed;
@@ -40,7 +40,7 @@ html.dq-minimal-light,
   --dq-fill-tertiary: #e8e8e8;
   --dq-fill-quaternary: #d4d4d4;
   --dq-fill-control-hover: rgba(0, 0, 0, 0.04);
-  --dq-fill-control-selected: rgba(0, 102, 204, 0.10);
+  --dq-fill-control-selected: rgba(0, 122, 255, 0.10);
   --dq-fill-dim: #f5f5f5;
   --dq-fill-dimmer: #fafafa;
   --dq-fill-grouped: var(--dq-surface-grouped);
@@ -71,15 +71,15 @@ html.dq-minimal-light,
   --dq-surface-inset: rgba(0, 0, 0, 0.02);
   --dq-surface-inset-hover: rgba(0, 0, 0, 0.04);
   --dq-surface-inset-pressed: rgba(0, 0, 0, 0.03);
-  --dq-surface-list-selected: rgba(0, 102, 204, 0.08);
-  --dq-surface-list-selected-strong: rgba(0, 102, 204, 0.12);
+  --dq-surface-list-selected: rgba(0, 122, 255, 0.08);
+  --dq-surface-list-selected-strong: rgba(0, 122, 255, 0.12);
   --dq-fill-muted-surface: rgba(0, 0, 0, 0.03);
   --dq-fill-muted-surface-hover: rgba(0, 0, 0, 0.06);
   --dq-fill-muted-control: rgba(0, 0, 0, 0.06);
   --dq-fill-muted-control-hover: rgba(0, 0, 0, 0.10);
   --dq-fill-muted-control-active: rgba(0, 0, 0, 0.14);
-  --dq-accent-surface: rgba(0, 102, 204, 0.05);
-  --dq-accent-surface-border: rgba(0, 102, 204, 0.15);
+  --dq-accent-surface: rgba(0, 122, 255, 0.05);
+  --dq-accent-surface-border: rgba(0, 122, 255, 0.15);
   --dq-success-surface: rgba(52, 199, 89, 0.06);
   --dq-success-surface-border: rgba(52, 199, 89, 0.20);
   --dq-scrollbar-thumb: rgba(0, 0, 0, 0.12);
@@ -92,11 +92,11 @@ html.dq-minimal-light,
   --dq-overlay-card: rgba(0, 0, 0, 0.36);
   --dq-overlay-gradient-end: rgba(0, 0, 0, 0.56);
 
-  --dq-accent-glow: rgba(0, 102, 204, 0.12);
-  --dq-accent-glow-strong: rgba(0, 102, 204, 0.20);
-  --dq-accent-ring-subtle: rgba(0, 102, 204, 0.10);
-  --dq-accent-border-hover: rgba(0, 102, 204, 0.22);
-  --dq-accent-shadow-cta: rgba(0, 102, 204, 0.14);
+  --dq-accent-glow: rgba(0, 122, 255, 0.12);
+  --dq-accent-glow-strong: rgba(0, 122, 255, 0.20);
+  --dq-accent-ring-subtle: rgba(0, 122, 255, 0.10);
+  --dq-accent-border-hover: rgba(0, 122, 255, 0.22);
+  --dq-accent-shadow-cta: rgba(0, 122, 255, 0.14);
 
   --dq-warning-surface: rgba(255, 149, 0, 0.08);
   --dq-warning-surface-strong: rgba(255, 149, 0, 0.12);
@@ -130,7 +130,7 @@ html.dq-minimal-light,
   --dq-fill-muted-surface-light: rgba(0, 0, 0, 0.02);
   --dq-fill-muted-surface-medium: rgba(0, 0, 0, 0.04);
   --dq-overlay-deep: rgba(0, 0, 0, 0.58);
-  --dq-accent-gradient-start: rgba(0, 102, 204, 0.02);
+  --dq-accent-gradient-start: rgba(0, 122, 255, 0.02);
   --dq-success-highlight: rgba(52, 199, 89, 0.10);
   --dq-warning-highlight: rgba(255, 149, 0, 0.10);
   --dq-lightbox-info-bg: rgba(255, 255, 255, 0.96);
@@ -169,7 +169,7 @@ html.dq-minimal-light,
   --dq-mask: rgba(0, 0, 0, 0.40);
   --dq-mask-light: rgba(0, 0, 0, 0.20);
 
-  --dq-focus-ring: 0 0 0 3px rgba(0, 102, 204, 0.18);
+  --dq-focus-ring: 0 0 0 3px rgba(0, 122, 255, 0.18);
 
   --dq-success: #34c759;
   --dq-warning: #ff9500;
@@ -208,7 +208,7 @@ html.dq-minimal-light,
   --dq-welcome-chip-bg: #ffffff;
   --dq-welcome-chip-border: var(--dq-border);
   --dq-welcome-chip-hover: color-mix(in srgb, var(--dq-accent) 8%, #ffffff);
-  --dq-selection-bg: rgba(0, 102, 204, 0.16);
+  --dq-selection-bg: rgba(0, 122, 255, 0.16);
   --dq-selection-color: inherit;
 
   font-family: var(--dq-font-sans);
@@ -220,52 +220,52 @@ html.dq-minimal-light,
   -moz-osx-font-smoothing: auto;
 }
 
-html.dq-minimal-light body {
+html.dq-mac-light body {
   font-size: var(--dq-font-size-body);
   background-color: var(--dq-bg-page);
   background-image: var(--dq-bg-page-glow);
   background-repeat: no-repeat;
 }
 
-html.dq-minimal-light .dq-btn--primary,
-.dq-minimal-light .dq-btn--primary { color: var(--dq-on-accent); }
-html.dq-minimal-light .dq-btn--primary.dq-btn--plain,
-html.dq-minimal-light .dq-btn--primary.is-plain,
-.dq-minimal-light .dq-btn--primary.dq-btn--plain,
-.dq-minimal-light .dq-btn--primary.is-plain { color: var(--dq-accent); }
-html.dq-minimal-light .dq-icon-btn--primary,
-.dq-minimal-light .dq-icon-btn--primary { color: var(--dq-on-accent); }
+html.dq-mac-light .dq-btn--primary,
+.dq-mac-light .dq-btn--primary { color: var(--dq-on-accent); }
+html.dq-mac-light .dq-btn--primary.dq-btn--plain,
+html.dq-mac-light .dq-btn--primary.is-plain,
+.dq-mac-light .dq-btn--primary.dq-btn--plain,
+.dq-mac-light .dq-btn--primary.is-plain { color: var(--dq-accent); }
+html.dq-mac-light .dq-icon-btn--primary,
+.dq-mac-light .dq-icon-btn--primary { color: var(--dq-on-accent); }
 
-html.dq-minimal-light .dq-shadcn-sidebar,
-.dq-minimal-light .dq-shadcn-sidebar {
+html.dq-mac-light .dq-shadcn-sidebar,
+.dq-mac-light .dq-shadcn-sidebar {
   background: var(--dq-glass-sidebar-bg); border-right: 1px solid var(--dq-border);
   backdrop-filter: var(--dq-glass-blur); -webkit-backdrop-filter: var(--dq-glass-blur);
 }
-html.dq-minimal-light .dq-shadcn-topbar,
-.dq-minimal-light .dq-shadcn-topbar {
+html.dq-mac-light .dq-shadcn-topbar,
+.dq-mac-light .dq-shadcn-topbar {
   background: var(--dq-glass-bar-bg); border-bottom: 1px solid var(--dq-border);
   backdrop-filter: var(--dq-glass-blur); -webkit-backdrop-filter: var(--dq-glass-blur);
 }
-html.dq-minimal-light .dq-shadcn-command-bar,
-.dq-minimal-light .dq-shadcn-command-bar {
+html.dq-mac-light .dq-shadcn-command-bar,
+.dq-mac-light .dq-shadcn-command-bar {
   background: var(--dq-glass-floating-bar-bg); border: 1px solid var(--dq-border-strong);
   box-shadow: var(--dq-shadow-lg); border-radius: var(--dq-radius-control);
 }
 
-html.dq-minimal-light .dq-shadcn-indicator,
-.dq-minimal-light .dq-shadcn-indicator {
+html.dq-mac-light .dq-shadcn-indicator,
+.dq-mac-light .dq-shadcn-indicator {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--dq-accent); box-shadow: 0 0 4px var(--dq-accent-glow);
 }
-html.dq-minimal-light .dq-shadcn-indicator--success,
-.dq-minimal-light .dq-shadcn-indicator--success { background: var(--dq-success); box-shadow: 0 0 4px rgba(52, 199, 89, 0.20); }
-html.dq-minimal-light .dq-shadcn-indicator--warning,
-.dq-minimal-light .dq-shadcn-indicator--warning { background: var(--dq-warning); box-shadow: 0 0 4px rgba(255, 149, 0, 0.20); }
-html.dq-minimal-light .dq-shadcn-indicator--danger,
-.dq-minimal-light .dq-shadcn-indicator--danger { background: var(--dq-danger); box-shadow: 0 0 4px rgba(255, 59, 48, 0.20); }
+html.dq-mac-light .dq-shadcn-indicator--success,
+.dq-mac-light .dq-shadcn-indicator--success { background: var(--dq-success); box-shadow: 0 0 4px rgba(52, 199, 89, 0.20); }
+html.dq-mac-light .dq-shadcn-indicator--warning,
+.dq-mac-light .dq-shadcn-indicator--warning { background: var(--dq-warning); box-shadow: 0 0 4px rgba(255, 149, 0, 0.20); }
+html.dq-mac-light .dq-shadcn-indicator--danger,
+.dq-mac-light .dq-shadcn-indicator--danger { background: var(--dq-danger); box-shadow: 0 0 4px rgba(255, 59, 48, 0.20); }
 
-html.dq-minimal-light .dq-shadcn-kbd,
-.dq-minimal-light .dq-shadcn-kbd {
+html.dq-mac-light .dq-shadcn-kbd,
+.dq-mac-light .dq-shadcn-kbd {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 20px; height: 20px; padding: 0 6px;
   font-family: var(--dq-font-mono); font-size: var(--dq-font-size-caption); font-weight: 500;
@@ -274,94 +274,94 @@ html.dq-minimal-light .dq-shadcn-kbd,
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
 }
 
-html.dq-minimal-light .dq-shadcn-track,
-.dq-minimal-light .dq-shadcn-track { height: 3px; background: var(--dq-fill-tertiary); border-radius: 999px; overflow: hidden; }
-html.dq-minimal-light .dq-shadcn-track__fill,
-.dq-minimal-light .dq-shadcn-track__fill {
+html.dq-mac-light .dq-shadcn-track,
+.dq-mac-light .dq-shadcn-track { height: 3px; background: var(--dq-fill-tertiary); border-radius: 999px; overflow: hidden; }
+html.dq-mac-light .dq-shadcn-track__fill,
+.dq-mac-light .dq-shadcn-track__fill {
   height: 100%; background: var(--dq-accent); border-radius: inherit; transition: width 0.3s ease;
 }
 
-html.dq-minimal-light .dq-shadcn-badge,
-.dq-minimal-light .dq-shadcn-badge {
+html.dq-mac-light .dq-shadcn-badge,
+.dq-mac-light .dq-shadcn-badge {
   display: inline-flex; align-items: center; padding: 2px 10px;
   border-radius: var(--dq-radius-pill); font-size: var(--dq-font-size-caption);
   font-weight: 500; line-height: 1.4;
   background: var(--dq-fill-secondary); color: var(--dq-label-secondary);
   border: 1px solid var(--dq-border);
 }
-html.dq-minimal-light .dq-shadcn-badge--accent,
-.dq-minimal-light .dq-shadcn-badge--accent {
+html.dq-mac-light .dq-shadcn-badge--accent,
+.dq-mac-light .dq-shadcn-badge--accent {
   background: var(--dq-accent); color: var(--dq-on-accent); border-color: var(--dq-accent);
 }
 
-html.dq-minimal-light .dq-glass--tooltip,
-.dq-minimal-light .dq-glass--tooltip { color: rgba(255, 255, 255, 0.94); }
+html.dq-mac-light .dq-glass--tooltip,
+.dq-mac-light .dq-glass--tooltip { color: rgba(255, 255, 255, 0.94); }
 
-html.dq-minimal-light ::selection,
-.dq-minimal-light ::selection { background: rgba(0, 102, 204, 0.14); color: var(--dq-label-primary); }
+html.dq-mac-light ::selection,
+.dq-mac-light ::selection { background: rgba(0, 122, 255, 0.14); color: var(--dq-label-primary); }
 
-html.dq-minimal-light ::-webkit-scrollbar,
-.dq-minimal-light ::-webkit-scrollbar { width: 8px; height: 8px; }
-html.dq-minimal-light ::-webkit-scrollbar-track,
-.dq-minimal-light ::-webkit-scrollbar-track { background: transparent; }
-html.dq-minimal-light ::-webkit-scrollbar-thumb,
-.dq-minimal-light ::-webkit-scrollbar-thumb {
+html.dq-mac-light ::-webkit-scrollbar,
+.dq-mac-light ::-webkit-scrollbar { width: 8px; height: 8px; }
+html.dq-mac-light ::-webkit-scrollbar-track,
+.dq-mac-light ::-webkit-scrollbar-track { background: transparent; }
+html.dq-mac-light ::-webkit-scrollbar-thumb,
+.dq-mac-light ::-webkit-scrollbar-thumb {
   background: var(--dq-scrollbar-thumb); border-radius: 4px;
   border: 2px solid transparent; background-clip: padding-box;
 }
-html.dq-minimal-light ::-webkit-scrollbar-thumb:hover,
-.dq-minimal-light ::-webkit-scrollbar-thumb:hover {
+html.dq-mac-light ::-webkit-scrollbar-thumb:hover,
+.dq-mac-light ::-webkit-scrollbar-thumb:hover {
   background: var(--dq-scrollbar-thumb-hover); border: 2px solid transparent; background-clip: padding-box;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.dq-minimal-light, .dq-minimal-light {
+  html.dq-mac-light, .dq-mac-light {
     --dq-transition-hover: none; --dq-transition-field: none;
     --dq-transition-active: none; --dq-transition-panel: none; --dq-transition-switch: none;
   }
 }
 @media (prefers-contrast: high) {
-  html.dq-minimal-light, .dq-minimal-light {
+  html.dq-mac-light, .dq-mac-light {
     --dq-label-primary: rgba(0, 0, 0, 0.96);
     --dq-label-secondary: rgba(0, 0, 0, 0.75);
     --dq-label-tertiary: rgba(0, 0, 0, 0.55);
     --dq-border: rgba(0, 0, 0, 0.14); --dq-border-strong: rgba(0, 0, 0, 0.22);
-    --dq-focus-ring: 0 0 0 4px rgba(0, 102, 204, 0.28);
+    --dq-focus-ring: 0 0 0 4px rgba(0, 122, 255, 0.28);
   }
 }
 @media (prefers-reduced-transparency: reduce) {
-  html.dq-minimal-light .dq-glass,
-  html.dq-minimal-light .dq-glass--bar,
-  html.dq-minimal-light .dq-glass--bar-strong,
-  html.dq-minimal-light .dq-glass--sidebar,
-  html.dq-minimal-light .dq-glass--grouped,
-  html.dq-minimal-light .dq-glass--popover,
-  html.dq-minimal-light .dq-glass--panel,
-  html.dq-minimal-light .dq-shadcn-sidebar,
-  html.dq-minimal-light .dq-shadcn-topbar,
-  .dq-minimal-light .dq-glass,
-  .dq-minimal-light .dq-glass--bar,
-  .dq-minimal-light .dq-glass--bar-strong,
-  .dq-minimal-light .dq-glass--sidebar,
-  .dq-minimal-light .dq-glass--grouped,
-  .dq-minimal-light .dq-glass--popover,
-  .dq-minimal-light .dq-glass--panel,
-  .dq-minimal-light .dq-shadcn-sidebar,
-  .dq-minimal-light .dq-shadcn-topbar {
+  html.dq-mac-light .dq-glass,
+  html.dq-mac-light .dq-glass--bar,
+  html.dq-mac-light .dq-glass--bar-strong,
+  html.dq-mac-light .dq-glass--sidebar,
+  html.dq-mac-light .dq-glass--grouped,
+  html.dq-mac-light .dq-glass--popover,
+  html.dq-mac-light .dq-glass--panel,
+  html.dq-mac-light .dq-shadcn-sidebar,
+  html.dq-mac-light .dq-shadcn-topbar,
+  .dq-mac-light .dq-glass,
+  .dq-mac-light .dq-glass--bar,
+  .dq-mac-light .dq-glass--bar-strong,
+  .dq-mac-light .dq-glass--sidebar,
+  .dq-mac-light .dq-glass--grouped,
+  .dq-mac-light .dq-glass--popover,
+  .dq-mac-light .dq-glass--panel,
+  .dq-mac-light .dq-shadcn-sidebar,
+  .dq-mac-light .dq-shadcn-topbar {
     backdrop-filter: none; -webkit-backdrop-filter: none;
   }
-  html.dq-minimal-light .dq-glass--bar,
-  html.dq-minimal-light .dq-glass--bar-strong,
-  html.dq-minimal-light .dq-shadcn-topbar,
-  .dq-minimal-light .dq-glass--bar,
-  .dq-minimal-light .dq-glass--bar-strong,
-  .dq-minimal-light .dq-shadcn-topbar { background: var(--dq-glass-bar-bg-strong); }
-  html.dq-minimal-light .dq-glass--sidebar,
-  html.dq-minimal-light .dq-shadcn-sidebar,
-  .dq-minimal-light .dq-glass--sidebar,
-  .dq-minimal-light .dq-shadcn-sidebar { background: var(--dq-bg-base); }
-  html.dq-minimal-light .dq-glass--popover,
-  html.dq-minimal-light .dq-glass--panel,
-  .dq-minimal-light .dq-glass--popover,
-  .dq-minimal-light .dq-glass--panel { background: var(--dq-bg-elevated); }
+  html.dq-mac-light .dq-glass--bar,
+  html.dq-mac-light .dq-glass--bar-strong,
+  html.dq-mac-light .dq-shadcn-topbar,
+  .dq-mac-light .dq-glass--bar,
+  .dq-mac-light .dq-glass--bar-strong,
+  .dq-mac-light .dq-shadcn-topbar { background: var(--dq-glass-bar-bg-strong); }
+  html.dq-mac-light .dq-glass--sidebar,
+  html.dq-mac-light .dq-shadcn-sidebar,
+  .dq-mac-light .dq-glass--sidebar,
+  .dq-mac-light .dq-shadcn-sidebar { background: var(--dq-bg-base); }
+  html.dq-mac-light .dq-glass--popover,
+  html.dq-mac-light .dq-glass--panel,
+  .dq-mac-light .dq-glass--popover,
+  .dq-mac-light .dq-glass--panel { background: var(--dq-bg-elevated); }
 }

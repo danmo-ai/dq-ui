@@ -1,13 +1,6 @@
 /**
- * DanQing Nord Dark theme — arctic, bluish dark aesthetic.
- *
- * Design philosophy:
- * - Nord palette: cool blue-gray base (#2e3440) with frost accents
- * - Cyan accent (#88c0d0) for primary actions
- * - Calm, low-contrast palette ideal for extended coding
- * - Inspired by the popular Nord VSCode/terminal theme
- *
- * Usage: Add `class="dq-nord-dark"` on <html> or <body>.
+ * DanQing Nord Dark — frost accent on macOS 26 Liquid Glass materials.
+ * Shell/glass: import dq-recipe-dark.css after this file.
  */
 @import url('./dq-typography.css');
 
@@ -20,8 +13,12 @@ html.dq-nord-dark,
   --dq-accent-muted: #81a1c1;
   --dq-accent-tint: rgba(136, 192, 208, 0.12);
   --dq-accent-tint-strong: rgba(136, 192, 208, 0.20);
-  --dq-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-  --dq-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  /* System UI stack only — no Inter/web fonts (CJK + Latin mismatch). */
+  --dq-font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', ui-sans-serif, system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    sans-serif;
+  --dq-font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
   --dq-font-weight-medium: 500;
   --dq-material-chrome: #2e3440;
   --dq-material-elevated: #3b4252;
@@ -52,13 +49,6 @@ html.dq-nord-dark,
   --dq-separator: rgba(76, 86, 106, 0.42);
   --dq-separator-strong: rgba(76, 86, 106, 0.52);
   --dq-separator-light: rgba(76, 86, 106, 0.32);
-  --dq-glass-bar-bg: rgba(46, 52, 64, 0.80);
-  --dq-glass-bar-bg-strong: rgba(46, 52, 64, 0.90);
-  --dq-glass-sidebar-bg: rgba(46, 52, 64, 0.74);
-  --dq-glass-popover-bg: rgba(59, 66, 82, 0.93);
-  --dq-glass-grouped-bg: rgba(36, 41, 51, 0.86);
-  --dq-glass-grouped-bg-solid: var(--dq-bg-base);
-  --dq-glass-panel-bg: rgba(59, 66, 82, 0.95);
   --dq-glass-control-bg: transparent;
   --dq-glass-control-bg-hover: color-mix(in srgb, var(--dq-label-primary) 4%, transparent);
   --dq-glass-control-bg-focus: color-mix(in srgb, var(--dq-label-primary) 6%, transparent);
@@ -67,9 +57,6 @@ html.dq-nord-dark,
   --dq-glass-control-border-focus: color-mix(in srgb, var(--dq-accent) 65%, var(--dq-glass-control-border));
   --dq-glass-control-focus-ring: none;
   --dq-glass-control-bg-solid: var(--dq-fill-secondary);
-  --dq-glass-tooltip-bg: rgba(46, 52, 64, 0.96);
-  --dq-glass-scrim: rgba(0, 0, 0, 0.40);
-  --dq-glass-floating-bar-bg: rgba(59, 66, 82, 0.95);
   --dq-surface-inset: rgba(236, 239, 244, 0.03);
   --dq-surface-inset-hover: rgba(236, 239, 244, 0.06);
   --dq-surface-inset-pressed: rgba(236, 239, 244, 0.04);
@@ -129,17 +116,6 @@ html.dq-nord-dark,
   --dq-success-highlight: rgba(163, 190, 140, 0.16);
   --dq-warning-highlight: rgba(235, 203, 139, 0.16);
   --dq-lightbox-info-bg: rgba(46, 52, 64, 0.90);
-  --dq-glass-border: var(--dq-border-hairline);
-  --dq-glass-border-strong: rgba(236, 239, 244, 0.10);
-  --dq-glass-highlight: rgba(136, 192, 208, 0.04);
-  --dq-glass-blur: saturate(170%) blur(18px);
-  --dq-glass-blur-light: saturate(170%) blur(10px);
-  --dq-glass-blur-heavy: saturate(170%) blur(22px);
-  --dq-fill-on-glass: rgba(236, 239, 244, 0.06);
-  --dq-fill-on-glass-hover: rgba(236, 239, 244, 0.10);
-  --dq-fill-on-glass-pressed: rgba(236, 239, 244, 0.14);
-  --dq-fill-on-glass-subtle: rgba(236, 239, 244, 0.04);
-  --dq-bg-page-glow: radial-gradient(ellipse 130% 200px at 50% -4%, rgba(136, 192, 208, 0.04) 0%, rgba(129, 161, 193, 0.02) 30%, transparent 58%);
   --dq-radius-group: 10px; --dq-radius-control: 8px; --dq-radius-control-sm: 6px; --dq-radius-button: 8px;
   --dq-radius-pill: 9999px; --dq-radius-input: 8px; --dq-radius-menu: 10px; --dq-radius-glass: 10px;
   --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.32), 0 0 0 0.5px rgba(136, 192, 208, 0.04) inset;
@@ -164,25 +140,11 @@ html.dq-nord-dark,
   --dq-system-green: var(--dq-success); --dq-system-orange: var(--dq-warning); --dq-system-red: var(--dq-danger); --dq-system-blue: var(--dq-info);
   --dq-row-gutter: 16px;
 
-  /* ── Shell / Chat surfaces (theme-owned; products must not override) ── */
-  --dq-shell-sidebar-bg: var(--dq-material-chrome, var(--dq-bg-base));
-  --dq-shell-sidebar-border: var(--dq-border-hairline, var(--dq-border-subtle));
-  --dq-shell-sidebar-blur: none;
-  --dq-shell-panel-bg: var(--dq-material-chrome, var(--dq-bg-base));
-  --dq-shell-panel-border: var(--dq-border-hairline, var(--dq-border-subtle));
-  --dq-shell-panel-blur: none;
-  --dq-shell-stream-bg: var(--dq-bg-page);
-  --dq-shell-header-bg: transparent;
-  --dq-shell-header-blur: none;
-  --dq-shell-divider: var(--dq-border-hairline, var(--dq-border-subtle));
-  --dq-shell-rail-width-collapsed: 44px;
-  --dq-shell-radius: 0px;
-  --dq-shell-gap: 0px;
-  --dq-shell-shadow: none;
-  --dq-chat-column-max: 720px;
+  /* Shell / glass / composer materials: dq-recipe-dark.css */
+  --dq-chat-column-max: 920px;
   --dq-chat-gutter: 28px;
-  --dq-chat-turn-gap: 20px;
-  --dq-chat-block-gap: 10px;
+  --dq-chat-turn-gap: 14px;
+  --dq-chat-block-gap: 4px;
   --dq-msg-user-bg: color-mix(in srgb, var(--dq-accent) 22%, transparent);
   --dq-msg-user-border: color-mix(in srgb, var(--dq-accent) 28%, transparent);
   --dq-msg-user-fg: var(--dq-label-primary);
@@ -193,12 +155,6 @@ html.dq-nord-dark,
   --dq-msg-agent-pad-y: 2px;
   --dq-msg-enter-duration: 0.18s;
   --dq-msg-enter-ease: ease;
-  --dq-composer-radius: 14px;
-  --dq-composer-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
-  --dq-composer-border: var(--dq-border-strong, var(--dq-border));
-  --dq-composer-pad: 12px;
-  --dq-composer-max-height: 240px;
-  --dq-composer-fade: linear-gradient(to top, var(--dq-shell-stream-bg) 30%, transparent 100%);
   --dq-tool-card-radius: 10px;
   --dq-tool-card-bg: color-mix(in srgb, var(--dq-label-primary) 3%, transparent);
   --dq-tool-card-border: color-mix(in srgb, var(--dq-label-primary) 7%, transparent);
@@ -233,4 +189,4 @@ html.dq-nord-dark ::-webkit-scrollbar-thumb, .dq-nord-dark ::-webkit-scrollbar-t
 html.dq-nord-dark ::-webkit-scrollbar-thumb:hover, .dq-nord-dark ::-webkit-scrollbar-thumb:hover { background: var(--dq-scrollbar-thumb-hover); border: 2px solid transparent; background-clip: padding-box; }
 @media (prefers-reduced-motion: reduce) { html.dq-nord-dark, .dq-nord-dark { --dq-transition-hover: none; --dq-transition-field: none; --dq-transition-active: none; --dq-transition-panel: none; --dq-transition-switch: none; } }
 @media (prefers-contrast: high) { html.dq-nord-dark, .dq-nord-dark { --dq-label-primary: rgba(236, 239, 244, 0.98); --dq-label-secondary: rgba(236, 239, 244, 0.85); --dq-label-tertiary: rgba(236, 239, 244, 0.65); --dq-border: rgba(236, 239, 244, 0.18); --dq-border-strong: rgba(236, 239, 244, 0.28); --dq-focus-ring: 0 0 0 4px rgba(136, 192, 208, 0.42); } }
-@media (prefers-reduced-transparency: reduce) { html.dq-nord-dark .dq-glass, html.dq-nord-dark .dq-glass--bar, html.dq-nord-dark .dq-glass--bar-strong, html.dq-nord-dark .dq-glass--sidebar, html.dq-nord-dark .dq-glass--grouped, html.dq-nord-dark .dq-glass--popover, html.dq-nord-dark .dq-glass--panel, html.dq-nord-dark .dq-shadcn-sidebar, html.dq-nord-dark .dq-shadcn-topbar, .dq-nord-dark .dq-glass, .dq-nord-dark .dq-glass--bar, .dq-nord-dark .dq-glass--bar-strong, .dq-nord-dark .dq-glass--sidebar, .dq-nord-dark .dq-glass--grouped, .dq-nord-dark .dq-glass--popover, .dq-nord-dark .dq-glass--panel, .dq-nord-dark .dq-shadcn-sidebar, .dq-nord-dark .dq-shadcn-topbar { backdrop-filter: none; -webkit-backdrop-filter: none; } html.dq-nord-dark .dq-glass--bar, html.dq-nord-dark .dq-glass--bar-strong, html.dq-nord-dark .dq-shadcn-topbar, .dq-nord-dark .dq-glass--bar, .dq-nord-dark .dq-glass--bar-strong, .dq-nord-dark .dq-shadcn-topbar { background: var(--dq-glass-bar-bg-strong); } html.dq-nord-dark .dq-glass--sidebar, html.dq-nord-dark .dq-shadcn-sidebar, .dq-nord-dark .dq-glass--sidebar, .dq-nord-dark .dq-shadcn-sidebar { background: var(--dq-bg-base); } html.dq-nord-dark .dq-glass--popover, html.dq-nord-dark .dq-glass--panel, .dq-nord-dark .dq-glass--popover, .dq-nord-dark .dq-glass--panel { background: var(--dq-bg-elevated); } }
+@media (prefers-reduced-transparency: reduce) { html.dq-nord-dark .dq-glass, html.dq-nord-dark .dq-glass--bar, html.dq-nord-dark .dq-glass--bar-strong, html.dq-nord-dark .dq-glass--sidebar, html.dq-nord-dark .dq-glass--grouped, html.dq-nord-dark .dq-glass--popover, html.dq-nord-dark .dq-glass--panel, html.dq-nord-dark .dq-shadcn-sidebar, html.dq-nord-dark .dq-shadcn-topbar, .dq-nord-dark .dq-glass, .dq-nord-dark .dq-glass--bar, .dq-nord-dark .dq-glass--bar-strong, .dq-nord-dark .dq-glass--sidebar, .dq-nord-dark .dq-glass--grouped, .dq-nord-dark .dq-glass--popover, .dq-nord-dark .dq-glass--panel, .dq-nord-dark .dq-shadcn-sidebar, .dq-nord-dark .dq-shadcn-topbar { backdrop-filter: none; -webkit-backdrop-filter: none; } html.dq-nord-dark .dq-glass--bar, html.dq-nord-dark .dq-glass--bar-strong, html.dq-nord-dark .dq-shadcn-topbar, .dq-nord-dark .dq-glass--bar, .dq-nord-dark .dq-glass--bar-strong, .dq-nord-dark .dq-shadcn-topbar { background: var(--dq-material-chrome); } html.dq-nord-dark .dq-glass--sidebar, html.dq-nord-dark .dq-shadcn-sidebar, .dq-nord-dark .dq-glass--sidebar, .dq-nord-dark .dq-shadcn-sidebar { background: var(--dq-material-chrome); } html.dq-nord-dark .dq-glass--grouped, .dq-nord-dark .dq-glass--grouped { background: var(--dq-material-grouped); } html.dq-nord-dark .dq-glass--popover, html.dq-nord-dark .dq-glass--panel, .dq-nord-dark .dq-glass--popover, .dq-nord-dark .dq-glass--panel { background: var(--dq-material-elevated); } }

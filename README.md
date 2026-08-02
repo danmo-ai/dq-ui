@@ -34,33 +34,29 @@ Product-side gates (in Studio): `make check-ep-boundary` and `make check-theme-l
 
 ## Themes
 
-`@danqing/dq-tokens` ships a shared spacing / typography base (`dq-typography.css` → `--dq-space-*`, `--dq-font-size-*`, `--dq-scrollbar-size*`) plus selectable palettes:
+`@danqing/dq-tokens` ships a shared spacing / typography base (`dq-typography.css`) plus a **curated set of macOS 26 Liquid Glass** palettes (soft translucent shell + true glass floats). Themes differ by accent/hue only.
 
 | Theme | Slug | CSS import | `<html>` class | Dark |
 |-------|------|------------|----------------|------|
 | macOS | `mac` | `dq-mac.css` | `dq-mac` | yes |
-| Linear Dark | `linear-dark` | `dq-linear-dark.css` | `dq-linear-dark` | yes |
-| China Red Dark | `china-red-dark` | `dq-china-red-dark.css` | `dq-china-red-dark` | yes |
-| shadcn/ui Dark | `shadcn-dark` | `dq-shadcn-dark.css` | `dq-shadcn-dark` | yes |
-| shadcn/ui Light | `shadcn-light` | `dq-shadcn-light.css` | `dq-shadcn-light` | no |
-| Catppuccin Mocha | `catppuccin` | `dq-catppuccin.css` | `dq-catppuccin` | yes |
+| macOS Light | `mac-light` | `dq-mac-light.css` | `dq-mac-light` | no |
 | Tokyo Night | `tokyo-night` | `dq-tokyo-night.css` | `dq-tokyo-night` | yes |
-| Minimal Light | `minimal-light` | `dq-minimal-light.css` | `dq-minimal-light` | no |
-| Dracula | `dracula` | `dq-dracula.css` | `dq-dracula` | yes |
 | Nord Dark | `nord-dark` | `dq-nord-dark.css` | `dq-nord-dark` | yes |
-| Catppuccin Latte | `catppuccin-latte` | `dq-catppuccin-latte.css` | `dq-catppuccin-latte` | no |
-| Nord Light | `nord-light` | `dq-nord-light.css` | `dq-nord-light` | no |
-| GitHub Light | `github-light` | `dq-github-light.css` | `dq-github-light` | no |
+| Minimal Light | `minimal-light` | `dq-minimal-light.css` | `dq-minimal-light` | no |
 
 **Overlays** (import after a base palette; not selectable themes):
 
 | Overlay | CSS import | Notes |
 |---------|------------|-------|
-| Glass | `dq-glass.css` | Frosted surface utilities |
+| Recipe dark | `dq-recipe-dark.css` | Shared Liquid Glass shell/glass for dark themes |
+| Recipe light | `dq-recipe-light.css` | Shared Liquid Glass shell/glass for light themes |
+| Glass | `dq-glass.css` | Frosted surface utilities (`.dq-glass--*`) |
 | Tauri macOS | `dq-tauri-macos.css` | Desktop webview chrome (`dq-tauri-macos` on `<html>`) |
 
 ```ts
-import '@danqing/dq-tokens/dq-shadcn-light.css';
+import '@danqing/dq-tokens/dq-mac.css';
+import '@danqing/dq-tokens/dq-recipe-dark.css';
+import '@danqing/dq-tokens/dq-recipe-light.css';
 import '@danqing/dq-tokens/dq-glass.css';
 import '@danqing/dq-ui/style.css';
 import '@danqing/dq-shell/style.css';
@@ -69,11 +65,12 @@ import '@danqing/dq-shell/style.css';
 Programmatic switching (camelCase id **or** kebab slug; toggles `dark` automatically):
 
 ```ts
-import { applyDqTheme, THEME_OPTIONS } from '@danqing/dq-tokens';
+import { applyDqTheme, THEME_OPTIONS, resolveDqThemeSlug } from '@danqing/dq-tokens';
 
-applyDqTheme('shadcnLight');
-applyDqTheme('linear-dark'); // slug also works
+applyDqTheme('mac');
+applyDqTheme('mac-light'); // slug also works
 // Settings UI: iterate THEME_OPTIONS for label / accent / dark
+// Migrating removed themes: resolveDqThemeSlug(localStorageValue)
 ```
 
 Local previews: open `packages/tokens/demo/index.html` (gallery) or the per-theme demo pages in the same folder.

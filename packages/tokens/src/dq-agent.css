@@ -50,11 +50,11 @@ html {
   --dq-shell-shadow: none;
 
   /* ── Chat geometry ── */
-  --dq-chat-column-max: 720px;
+  --dq-chat-column-max: 920px;
   --dq-chat-gutter: var(--dq-space-lg);
-  --dq-chat-turn-gap: var(--dq-space-ms);
-  /* User↔agent column AND timeline event spacing (tools as footnotes) */
-  --dq-chat-block-gap: var(--dq-space-sm);
+  --dq-chat-turn-gap: 14px;
+  /* Timeline footnotes (thinking / tools) — keep tight; recipes may override */
+  --dq-chat-block-gap: 4px;
 
   /* ── Message chrome ── */
   --dq-msg-user-bg: color-mix(in srgb, var(--dq-accent) 22%, transparent);
@@ -98,7 +98,7 @@ html {
 /* ── Prose (chat / markdown reading column) ── */
 
 .dq-prose {
-  font-size: var(--dq-font-size-prose);
+  font-size: var(--dq-font-size-body);
   line-height: var(--dq-line-height-prose);
   color: var(--dq-msg-agent-fg, var(--dq-label-primary));
   word-break: break-word;
@@ -118,22 +118,31 @@ html {
 .dq-prose h4,
 .dq-prose h5,
 .dq-prose h6 {
-  margin: 1.15em 0 0.45em;
-  font-weight: 650;
+  margin: 1.1em 0 0.4em;
   line-height: var(--dq-line-height-snug);
   letter-spacing: var(--dq-tracking-tight);
   color: var(--dq-label-primary);
 }
 
+/* Chat headings stay in the body/prose band — hierarchy via weight only */
 .dq-prose h1,
 .dq-prose h2,
+.dq-prose h3,
+.dq-prose h4,
+.dq-prose h5,
+.dq-prose h6 {
+  font-size: inherit;
+}
+.dq-prose h1 {
+  font-weight: 650;
+}
+.dq-prose h2,
 .dq-prose h3 {
-  font-size: var(--dq-font-size-title);
+  font-weight: 600;
 }
 .dq-prose h4,
 .dq-prose h5,
 .dq-prose h6 {
-  font-size: var(--dq-font-size-prose);
   font-weight: 600;
 }
 
@@ -186,7 +195,7 @@ html {
   width: 100%;
   border-collapse: collapse;
   margin: 0.75em 0;
-  font-size: var(--dq-font-size-body);
+  font-size: inherit;
   border: 1px solid var(--dq-code-border);
   border-radius: var(--dq-code-radius);
   overflow: hidden;

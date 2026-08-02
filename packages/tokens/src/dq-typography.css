@@ -1,45 +1,47 @@
 /**
- * DanQing typography — 4 semantic steps only.
+ * DanQing typography — 4 semantic steps (macOS-dense, theme-invariant).
  *
  * Base: 16px (browser default) so 1rem == 16px.
  *
- *   caption  12px  badges / kbd / timestamps
- *   body     14px  default UI (chrome, tools, forms, lists)
- *   prose    16px  chat & long-form reading
- *   title    20px  session / page titles
+ *   caption  12px  badges / kbd / timestamps / hints
+ *   body     13px  default UI + chat (chrome, tools, forms, stream)
+ *   prose    13px  alias of body — no chat/UI size jump
+ *   title    15px  one page/session title per view
  *
- * Legacy aliases (footnote / secondary / …) map onto these four.
- * Do not invent new steps or hardcode 10/11px in products.
+ * Theme-invariant: palette CSS must NOT override --dq-font-size-*.
+ * Themes may change font-family / color / weight, never the scale.
+ * Prefer weight/color for hierarchy — avoid stacking competing sizes.
+ * Legacy aliases map onto these four. Do not invent new steps or hardcode 10/11px.
  */
 
 :root,
 html {
   /* ── Numeric scale (implementation detail) ── */
-  --dq-font-size-2xs: 0.75rem;   /* 12px */
-  --dq-font-size-xs:  0.75rem;   /* 12px */
-  --dq-font-size-sm:  0.875rem;  /* 14px */
-  --dq-font-size-base:0.875rem;  /* 14px */
-  --dq-font-size-md:  1rem;      /* 16px */
-  --dq-font-size-lg:  1rem;      /* 16px */
-  --dq-font-size-xl:  1.25rem;   /* 20px */
-  --dq-font-size-2xl: 1.25rem;   /* 20px */
-  --dq-font-size-3xl: 1.25rem;   /* 20px */
-  --dq-font-size-4xl: 1.25rem;   /* 20px */
+  --dq-font-size-2xs: 0.75rem;    /* 12px */
+  --dq-font-size-xs:  0.75rem;    /* 12px */
+  --dq-font-size-sm:  0.8125rem;  /* 13px */
+  --dq-font-size-base:0.8125rem;  /* 13px */
+  --dq-font-size-md:  0.8125rem;  /* 13px */
+  --dq-font-size-lg:  0.8125rem;  /* 13px */
+  --dq-font-size-xl:  0.9375rem;  /* 15px */
+  --dq-font-size-2xl: 0.9375rem;  /* 15px */
+  --dq-font-size-3xl: 0.9375rem;  /* 15px */
+  --dq-font-size-4xl: 0.9375rem;  /* 15px */
 
   /* ── Canonical 4 steps ── */
-  --dq-font-size-caption: 0.75rem;  /* 12px */
-  --dq-font-size-body:    0.875rem; /* 14px */
-  --dq-font-size-prose:   1rem;     /* 16px */
-  --dq-font-size-title:   1.25rem;  /* 20px */
+  --dq-font-size-caption: 0.75rem;   /* 12px */
+  --dq-font-size-body:    0.8125rem; /* 13px */
+  --dq-font-size-prose:   0.8125rem; /* 13px — same as body */
+  --dq-font-size-title:   0.9375rem; /* 15px */
 
   /* ── Legacy aliases → collapse into the 4 steps ── */
-  --dq-font-size-footnote:  var(--dq-font-size-caption); /* was 13 → 12 */
-  --dq-font-size-secondary: var(--dq-font-size-body);    /* was 15 → 14 */
-  --dq-font-size-callout:   var(--dq-font-size-prose);   /* was 16 → prose */
-  --dq-font-size-heading:   var(--dq-font-size-title);   /* was 20 → title */
-  --dq-font-size-display:   var(--dq-font-size-title);   /* was 24 → title */
-  --dq-font-size-hero:      var(--dq-font-size-title);   /* was 28 → title */
-  --dq-font-size-page:      var(--dq-font-size-title);   /* was 32 → title */
+  --dq-font-size-footnote:  var(--dq-font-size-caption);
+  --dq-font-size-secondary: var(--dq-font-size-body);
+  --dq-font-size-callout:   var(--dq-font-size-body);
+  --dq-font-size-heading:   var(--dq-font-size-body); /* section heads ≠ page title */
+  --dq-font-size-display:   var(--dq-font-size-title);
+  --dq-font-size-hero:      var(--dq-font-size-title);
+  --dq-font-size-page:      var(--dq-font-size-title);
 
   /* ── Line-height ── */
   --dq-line-height-none:   1;
@@ -48,7 +50,7 @@ html {
   --dq-line-height-normal: 1.45;
   --dq-line-height-relaxed:1.55;
   --dq-line-height-loose:  1.7;
-  --dq-line-height-prose:  1.65;
+  --dq-line-height-prose:  1.55;
 
   /* ── Letter-spacing ── */
   --dq-tracking-tighter: -0.02em;

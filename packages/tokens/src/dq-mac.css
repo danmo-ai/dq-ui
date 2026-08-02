@@ -1,7 +1,6 @@
 /**
- * DanQing macOS desktop tokens — single source for Web/Tauri apps.
- * macOS 26 (Tahoe) Liquid Glass semantics + Sequoia-compatible solids.
- * Import once in app entry before product styles.
+ * DanQing macOS Dark — system-blue Tahoe palette.
+ * Shell/glass materials: import dq-recipe-dark.css after this file.
  */
 @import url('./dq-typography.css');
 
@@ -43,7 +42,7 @@ html.dq-mac {
   --dq-fill-control-selected: rgba(120, 120, 128, 0.56);
   --dq-fill-dim: #161617;
   --dq-fill-dimmer: #0e0e0f;
-  --dq-fill-grouped: var(--dq-glass-grouped-bg);
+  --dq-fill-grouped: var(--dq-surface-grouped);
 
   --dq-label-primary: rgba(255, 255, 255, 0.94);
   --dq-label-secondary: rgba(255, 255, 255, 0.78);
@@ -59,14 +58,6 @@ html.dq-mac {
   --dq-separator-strong: rgba(84, 84, 88, 0.55);
   --dq-separator-light: rgba(84, 84, 88, 0.35);
 
-  /* Liquid Glass — translucent chrome (Tahoe 26) */
-  --dq-glass-bar-bg: rgba(28, 28, 30, 0.72);
-  --dq-glass-bar-bg-strong: rgba(28, 28, 30, 0.82);
-  --dq-glass-sidebar-bg: rgba(28, 28, 30, 0.68);
-  --dq-glass-popover-bg: color-mix(in srgb, var(--dq-bg-elevated) 55%, transparent);
-  --dq-glass-grouped-bg: rgba(28, 28, 30, 0.78);
-  --dq-glass-grouped-bg-solid: var(--dq-bg-base);
-  --dq-glass-panel-bg: rgba(28, 28, 30, 0.82);
   /* Form controls — inset on glass (transparent + hairline; no product override) */
   --dq-glass-control-bg: transparent;
   --dq-glass-control-bg-hover: color-mix(in srgb, var(--dq-label-primary) 4%, transparent);
@@ -76,9 +67,6 @@ html.dq-mac {
   --dq-glass-control-border-focus: color-mix(in srgb, var(--dq-accent) 65%, var(--dq-glass-control-border));
   --dq-glass-control-focus-ring: none;
   --dq-glass-control-bg-solid: var(--dq-fill-secondary);
-  --dq-glass-tooltip-bg: rgba(28, 28, 30, 0.92);
-  --dq-glass-scrim: rgba(0, 0, 0, 0.35);
-  --dq-glass-floating-bar-bg: rgba(40, 40, 42, 0.96);
 
   /* Inset lists & grouped settings blocks */
   --dq-surface-inset: rgba(255, 255, 255, 0.03);
@@ -148,21 +136,6 @@ html.dq-mac {
   --dq-warning-highlight: rgba(255, 159, 10, 0.18);
   --dq-lightbox-info-bg: rgba(28, 28, 30, 0.85);
 
-  --dq-glass-border: var(--dq-border-hairline);
-  --dq-glass-border-strong: rgba(255, 255, 255, 0.12);
-  --dq-glass-highlight: rgba(255, 255, 255, 0.06);
-
-  --dq-glass-blur: saturate(180%) blur(20px);
-  --dq-glass-blur-light: saturate(180%) blur(12px);
-  --dq-glass-blur-heavy: saturate(180%) blur(24px);
-
-  --dq-fill-on-glass: rgba(255, 255, 255, 0.08);
-  --dq-fill-on-glass-hover: rgba(255, 255, 255, 0.12);
-  --dq-fill-on-glass-pressed: rgba(255, 255, 255, 0.14);
-  --dq-fill-on-glass-subtle: rgba(255, 255, 255, 0.06);
-
-  --dq-bg-page-glow: none;
-
   --dq-radius-group: 12px;
   --dq-radius-control: 10px;
   --dq-radius-control-sm: 8px;
@@ -220,25 +193,11 @@ html.dq-mac {
 
   --dq-row-gutter: 16px;
 
-  /* ── Shell / Chat surfaces (theme-owned; products must not override) ── */
-  --dq-shell-sidebar-bg: #1a1a1c;
-  --dq-shell-sidebar-border: rgba(255, 255, 255, 0.06);
-  --dq-shell-sidebar-blur: none;
-  --dq-shell-panel-bg: #18181a;
-  --dq-shell-panel-border: rgba(255, 255, 255, 0.06);
-  --dq-shell-panel-blur: none;
-  --dq-shell-stream-bg: #121214;
-  --dq-shell-header-bg: transparent;
-  --dq-shell-header-blur: none;
-  --dq-shell-divider: rgba(255, 255, 255, 0.06);
-  --dq-shell-rail-width-collapsed: 44px;
-  --dq-shell-radius: 0px;
-  --dq-shell-gap: 0px;
-  --dq-shell-shadow: none;
-  --dq-chat-column-max: 680px;
+  /* Shell / glass / composer materials: dq-recipe-dark.css */
+  --dq-chat-column-max: 920px;
   --dq-chat-gutter: 32px;
-  --dq-chat-turn-gap: 28px;
-  --dq-chat-block-gap: 12px;
+  --dq-chat-turn-gap: 14px;
+  --dq-chat-block-gap: 4px;
   --dq-msg-user-bg: rgba(10, 132, 255, 0.18);
   --dq-msg-user-border: rgba(10, 132, 255, 0.22);
   --dq-msg-user-fg: rgba(255, 255, 255, 0.95);
@@ -249,12 +208,6 @@ html.dq-mac {
   --dq-msg-agent-pad-y: 6px;
   --dq-msg-enter-duration: 0.18s;
   --dq-msg-enter-ease: ease;
-  --dq-composer-radius: 16px;
-  --dq-composer-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
-  --dq-composer-border: rgba(255, 255, 255, 0.1);
-  --dq-composer-pad: 12px;
-  --dq-composer-max-height: 240px;
-  --dq-composer-fade: linear-gradient(to top, #121214 35%, transparent 100%);
   --dq-tool-card-radius: 8px;
   --dq-tool-card-bg: transparent;
   --dq-tool-card-border: transparent;
@@ -356,12 +309,14 @@ html.dq-mac-ui ::-webkit-scrollbar-thumb:hover,
   html.dq-mac-ui .dq-glass--grouped,
   html.dq-mac-ui .dq-glass--popover,
   html.dq-mac-ui .dq-glass--panel,
+  html.dq-mac-ui .dq-glass--composer,
   .dq-mac-ui .dq-glass--bar,
   .dq-mac-ui .dq-glass--bar-strong,
   .dq-mac-ui .dq-glass--sidebar,
   .dq-mac-ui .dq-glass--grouped,
   .dq-mac-ui .dq-glass--popover,
-  .dq-mac-ui .dq-glass--panel {
+  .dq-mac-ui .dq-glass--panel,
+  .dq-mac-ui .dq-glass--composer {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
@@ -370,18 +325,25 @@ html.dq-mac-ui ::-webkit-scrollbar-thumb:hover,
   html.dq-mac-ui .dq-glass--bar-strong,
   .dq-mac-ui .dq-glass--bar,
   .dq-mac-ui .dq-glass--bar-strong {
-    background: var(--dq-glass-bar-bg-strong);
+    background: var(--dq-material-chrome);
   }
 
   html.dq-mac-ui .dq-glass--sidebar,
   .dq-mac-ui .dq-glass--sidebar {
-    background: var(--dq-bg-base);
+    background: var(--dq-material-chrome);
+  }
+
+  html.dq-mac-ui .dq-glass--grouped,
+  .dq-mac-ui .dq-glass--grouped {
+    background: var(--dq-material-grouped);
   }
 
   html.dq-mac-ui .dq-glass--popover,
   html.dq-mac-ui .dq-glass--panel,
+  html.dq-mac-ui .dq-glass--composer,
   .dq-mac-ui .dq-glass--popover,
-  .dq-mac-ui .dq-glass--panel {
-    background: var(--dq-bg-elevated);
+  .dq-mac-ui .dq-glass--panel,
+  .dq-mac-ui .dq-glass--composer {
+    background: var(--dq-material-elevated);
   }
 }

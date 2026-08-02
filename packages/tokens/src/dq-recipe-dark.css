@@ -1,0 +1,134 @@
+/**
+ * Shared macOS 26 Liquid Glass materials for curated dark themes.
+ * Import AFTER palette themes so these overrides win.
+ * Themes: mac · tokyo-night · nord-dark
+ *
+ * Glass must stay clearly translucent — otherwise blur samples the same
+ * solid and reads as flat charcoal (not Tahoe).
+ */
+html.dq-mac,
+html.dq-tokyo-night,
+html.dq-nord-dark {
+  --dq-font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', ui-sans-serif, system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    sans-serif;
+  --dq-font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Canvas must be darker than chrome so frosted panels read as glass */
+  --dq-bg-page: color-mix(in srgb, var(--dq-material-chrome) 42%, #050508);
+
+  /* Liquid Glass fills — keep opacity low so blur / glow show through */
+  --dq-glass-bar-bg: color-mix(in srgb, var(--dq-material-chrome) 26%, transparent);
+  --dq-glass-bar-bg-strong: color-mix(in srgb, var(--dq-material-chrome) 40%, transparent);
+  --dq-glass-sidebar-bg: color-mix(in srgb, var(--dq-material-chrome) 16%, transparent);
+  --dq-glass-popover-bg: color-mix(in srgb, var(--dq-bg-elevated) 24%, transparent);
+  --dq-glass-grouped-bg: color-mix(in srgb, var(--dq-material-chrome) 26%, transparent);
+  --dq-glass-grouped-bg-solid: var(--dq-bg-base);
+  --dq-glass-panel-bg: color-mix(in srgb, var(--dq-material-chrome) 14%, transparent);
+  --dq-glass-tooltip-bg: color-mix(in srgb, var(--dq-material-chrome) 52%, transparent);
+  /* Composer / floating drawer — lighter frost so blur reads clearly */
+  --dq-glass-floating-bar-bg: color-mix(in srgb, var(--dq-material-chrome) 22%, transparent);
+  --dq-glass-scrim: rgba(0, 0, 0, 0.22);
+
+  /* Timeline density — footnotes stay tight; turns keep a little air */
+  --dq-chat-turn-gap: 14px;
+  --dq-chat-block-gap: 4px;
+
+  --dq-glass-border: color-mix(in srgb, var(--dq-label-primary) 10%, transparent);
+  --dq-glass-border-strong: color-mix(in srgb, var(--dq-label-primary) 16%, transparent);
+  --dq-glass-highlight: color-mix(in srgb, #ffffff 16%, transparent);
+
+  --dq-glass-blur: saturate(230%) blur(40px);
+  --dq-glass-blur-light: saturate(220%) blur(22px);
+  --dq-glass-blur-heavy: saturate(240%) blur(56px);
+
+  --dq-fill-on-glass: color-mix(in srgb, var(--dq-label-primary) 8%, transparent);
+  --dq-fill-on-glass-hover: color-mix(in srgb, var(--dq-label-primary) 12%, transparent);
+  --dq-fill-on-glass-pressed: color-mix(in srgb, var(--dq-label-primary) 14%, transparent);
+  --dq-fill-on-glass-subtle: color-mix(in srgb, var(--dq-label-primary) 6%, transparent);
+
+  /* Ambient wash — stronger so translucent chrome has color to refract */
+  --dq-bg-page-glow:
+    radial-gradient(
+      ellipse 95% 60% at 16% 8%,
+      color-mix(in srgb, var(--dq-accent) 30%, transparent) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 75% 50% at 86% 82%,
+      color-mix(in srgb, var(--dq-accent) 20%, transparent) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 120% 80% at 50% 100%,
+      color-mix(in srgb, #ffffff 8%, transparent) 0%,
+      transparent 55%
+    );
+
+  --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28), 0 0 0 0.5px var(--dq-glass-highlight) inset;
+  --dq-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.32), 0 0 0 0.5px var(--dq-glass-highlight) inset;
+  --dq-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.4), 0 0 0 0.5px var(--dq-glass-highlight) inset;
+  --dq-shadow-popover: 0 12px 40px rgba(0, 0, 0, 0.45), 0 1px 0 var(--dq-glass-highlight) inset;
+  --dq-shadow-glass:
+    0 10px 36px rgba(0, 0, 0, 0.42),
+    0 1px 0 var(--dq-glass-highlight) inset,
+    0 0 0 0.5px var(--dq-glass-border) inset;
+  --dq-shadow-popover-elevated:
+    0 0 0 1px var(--dq-glass-border-strong),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 16px 48px rgba(0, 0, 0, 0.25);
+  --dq-shadow-modal:
+    0 0 0 1px var(--dq-glass-border-strong),
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 32px 64px rgba(0, 0, 0, 0.3);
+  --dq-shadow-toast: 0 4px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.15);
+
+  /* Soft translucent shell — edge-to-edge */
+  --dq-shell-sidebar-bg: var(--dq-glass-sidebar-bg);
+  --dq-shell-sidebar-border: var(--dq-glass-border);
+  --dq-shell-sidebar-blur: var(--dq-glass-blur);
+  --dq-shell-panel-bg: var(--dq-glass-panel-bg);
+  --dq-shell-panel-border: var(--dq-glass-border);
+  --dq-shell-panel-blur: var(--dq-glass-blur);
+  --dq-shell-stream-bg: transparent;
+  --dq-shell-header-bg: transparent;
+  --dq-shell-header-blur: none;
+  --dq-shell-divider: var(--dq-glass-border);
+  --dq-shell-rail-width-collapsed: 44px;
+  --dq-shell-radius: 0px;
+  --dq-shell-gap: 0px;
+  --dq-shell-shadow: none;
+
+  --dq-composer-radius: 20px;
+  --dq-composer-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.28),
+    0 0.5px 0 var(--dq-glass-highlight) inset;
+  --dq-composer-border: var(--dq-glass-border);
+  --dq-composer-pad: 12px;
+  --dq-composer-max-height: 240px;
+  --dq-composer-fade: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--dq-bg-page) 82%, transparent) 18%,
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html.dq-mac,
+  html.dq-tokyo-night,
+  html.dq-nord-dark {
+    --dq-shell-sidebar-bg: var(--dq-material-chrome);
+    --dq-shell-sidebar-blur: none;
+    --dq-shell-panel-bg: var(--dq-material-grouped);
+    --dq-shell-panel-blur: none;
+    --dq-shell-stream-bg: var(--dq-bg-page);
+    --dq-glass-floating-bar-bg: var(--dq-bg-elevated);
+    --dq-glass-popover-bg: var(--dq-bg-elevated);
+    --dq-glass-sidebar-bg: var(--dq-material-chrome);
+    --dq-glass-panel-bg: var(--dq-material-chrome);
+    --dq-glass-bar-bg: var(--dq-material-chrome);
+    --dq-glass-bar-bg-strong: var(--dq-material-chrome);
+    --dq-bg-page-glow: none;
+  }
+}

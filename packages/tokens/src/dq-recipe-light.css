@@ -1,0 +1,130 @@
+/**
+ * Shared macOS 26 Liquid Glass — light themes.
+ * Page is cool system-gray so frosted white chrome can read as glass
+ * (white-on-white never looks like Tahoe).
+ */
+html.dq-mac-light,
+html.dq-minimal-light {
+  --dq-font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', ui-sans-serif, system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    sans-serif;
+  --dq-font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Cool macOS window gray — not near-white */
+  --dq-bg-page: #e8e8ed;
+  --dq-material-grouped: #ececf0;
+  --dq-bg-elevated: #f2f2f7;
+
+  /* Frosted white glass — lower opacity so blur samples page glow */
+  --dq-glass-bar-bg: rgba(255, 255, 255, 0.42);
+  --dq-glass-bar-bg-strong: rgba(255, 255, 255, 0.58);
+  --dq-glass-sidebar-bg: rgba(255, 255, 255, 0.36);
+  --dq-glass-popover-bg: rgba(255, 255, 255, 0.48);
+  --dq-glass-grouped-bg: rgba(255, 255, 255, 0.4);
+  --dq-glass-grouped-bg-solid: #ffffff;
+  --dq-glass-panel-bg: rgba(255, 255, 255, 0.32);
+  --dq-glass-tooltip-bg: rgba(255, 255, 255, 0.82);
+  --dq-glass-floating-bar-bg: rgba(255, 255, 255, 0.36);
+  --dq-glass-scrim: rgba(0, 0, 0, 0.08);
+
+  /* Timeline density — footnotes stay tight; turns keep a little air */
+  --dq-chat-turn-gap: 14px;
+  --dq-chat-block-gap: 4px;
+
+  --dq-glass-border: rgba(0, 0, 0, 0.08);
+  --dq-glass-border-strong: rgba(0, 0, 0, 0.12);
+  --dq-glass-highlight: rgba(255, 255, 255, 0.9);
+
+  --dq-glass-blur: saturate(210%) blur(36px);
+  --dq-glass-blur-light: saturate(200%) blur(18px);
+  --dq-glass-blur-heavy: saturate(220%) blur(48px);
+
+  --dq-fill-on-glass: rgba(0, 0, 0, 0.04);
+  --dq-fill-on-glass-hover: rgba(0, 0, 0, 0.07);
+  --dq-fill-on-glass-pressed: rgba(0, 0, 0, 0.09);
+  --dq-fill-on-glass-subtle: rgba(0, 0, 0, 0.03);
+
+  --dq-bg-page-glow:
+    radial-gradient(
+      ellipse 85% 50% at 12% 0%,
+      color-mix(in srgb, var(--dq-accent) 20%, transparent) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 70% 45% at 92% 88%,
+      color-mix(in srgb, var(--dq-accent) 14%, transparent) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 100% 60% at 50% 40%,
+      rgba(255, 255, 255, 0.55) 0%,
+      transparent 70%
+    );
+
+  --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 0.5px rgba(0, 0, 0, 0.04) inset;
+  --dq-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.07), 0 0 0 0.5px rgba(0, 0, 0, 0.04) inset;
+  --dq-shadow-lg: 0 10px 32px rgba(0, 0, 0, 0.1), 0 0 0 0.5px rgba(0, 0, 0, 0.05) inset;
+  --dq-shadow-popover: 0 14px 40px rgba(0, 0, 0, 0.12), 0 1px 0 var(--dq-glass-highlight) inset;
+  --dq-shadow-glass:
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 1px 0 var(--dq-glass-highlight) inset,
+    0 0 0 0.5px var(--dq-glass-border) inset;
+  --dq-shadow-popover-elevated:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 20px 48px rgba(0, 0, 0, 0.08);
+  --dq-shadow-modal:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 12px 32px rgba(0, 0, 0, 0.1),
+    0 32px 64px rgba(0, 0, 0, 0.1);
+  --dq-shadow-toast: 0 6px 18px rgba(0, 0, 0, 0.1);
+
+  --dq-shell-sidebar-bg: var(--dq-glass-sidebar-bg);
+  --dq-shell-sidebar-border: var(--dq-glass-border);
+  --dq-shell-sidebar-blur: var(--dq-glass-blur);
+  --dq-shell-panel-bg: var(--dq-glass-panel-bg);
+  --dq-shell-panel-border: var(--dq-glass-border);
+  --dq-shell-panel-blur: var(--dq-glass-blur);
+  --dq-shell-stream-bg: transparent;
+  --dq-shell-header-bg: transparent;
+  --dq-shell-header-blur: none;
+  --dq-shell-divider: var(--dq-glass-border);
+  --dq-shell-rail-width-collapsed: 44px;
+  --dq-shell-radius: 0px;
+  --dq-shell-gap: 0px;
+  --dq-shell-shadow: none;
+
+  --dq-composer-radius: 20px;
+  --dq-composer-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.08),
+    0 0.5px 0 var(--dq-glass-highlight) inset;
+  --dq-composer-border: var(--dq-glass-border);
+  --dq-composer-pad: 12px;
+  --dq-composer-max-height: 240px;
+  --dq-composer-fade: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--dq-bg-page) 92%, transparent) 15%,
+    transparent 100%
+  );
+
+  --dq-border-hairline: rgba(0, 0, 0, 0.06);
+  --dq-separator-light: rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html.dq-mac-light,
+  html.dq-minimal-light {
+    --dq-shell-sidebar-bg: #f2f2f7;
+    --dq-shell-sidebar-blur: none;
+    --dq-shell-panel-bg: #ffffff;
+    --dq-shell-panel-blur: none;
+    --dq-shell-stream-bg: var(--dq-bg-page);
+    --dq-glass-floating-bar-bg: #ffffff;
+    --dq-glass-popover-bg: #ffffff;
+    --dq-glass-sidebar-bg: #f2f2f7;
+    --dq-glass-panel-bg: #ffffff;
+    --dq-bg-page-glow: none;
+  }
+}
