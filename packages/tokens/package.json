@@ -24,7 +24,8 @@
     "./dq-glass.css": "./dist/dq-glass.css",
     "./dq-tauri-macos.css": "./dist/dq-tauri-macos.css",
     "./dq-typography.css": "./dist/dq-typography.css",
-    "./dq-agent.css": "./dist/dq-agent.css"
+    "./dq-agent.css": "./dist/dq-agent.css",
+    "./dq-mobile.css": "./dist/dq-mobile.css"
   },
   "files": ["dist"]
 }

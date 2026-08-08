@@ -1,0 +1,217 @@
+/**
+ * Mobile browser overlay — import after a palette theme (+ recipe / glass / agent).
+ * Opt in with `dq-mobile` on <html>. Safe-area, touch targets, chat chrome.
+ */
+
+:root,
+html {
+  --dq-safe-top: env(safe-area-inset-top, 0px);
+  --dq-safe-right: env(safe-area-inset-right, 0px);
+  --dq-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --dq-safe-left: env(safe-area-inset-left, 0px);
+
+  --dq-mobile-page-max: 480px;
+  --dq-mobile-pad-x: 16px;
+  --dq-mobile-gap: 12px;
+  --dq-mobile-touch-min: 44px;
+  --dq-mobile-font-control: 16px; /* iOS: avoid input focus zoom */
+  --dq-mobile-appbar-height: 52px;
+  --dq-mobile-brand-size: clamp(3.6rem, 16vw, 4.8rem);
+}
+
+html.dq-mobile {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html.dq-mobile,
+html.dq-mobile body {
+  min-height: 100%;
+  min-height: 100dvh;
+  overscroll-behavior-y: none;
+}
+
+html.dq-mobile body {
+  margin: 0;
+  background: var(--dq-shell-stream-bg, var(--dq-bg-page, var(--dq-bg-base)));
+  color: var(--dq-label-primary);
+  font-family: var(--dq-font-sans, inherit);
+}
+
+/* Touch-friendly controls (skip explicit sm) */
+html.dq-mobile .dq-btn:not(.dq-btn--sm) {
+  min-height: var(--dq-mobile-touch-min);
+  height: auto;
+  padding: 10px 16px;
+}
+
+html.dq-mobile .dq-btn--lg {
+  min-height: var(--dq-mobile-touch-min);
+  height: auto;
+  padding: 12px 18px;
+  font-size: var(--dq-font-size-body);
+}
+
+html.dq-mobile .dq-icon-btn:not(.dq-icon-btn--sm) {
+  width: var(--dq-mobile-touch-min);
+  height: var(--dq-mobile-touch-min);
+}
+
+html.dq-mobile .dq-input:not(.dq-input--sm) {
+  min-height: var(--dq-mobile-touch-min);
+  font-size: var(--dq-mobile-font-control);
+  padding: 10px 14px;
+}
+
+html.dq-mobile .dq-input--textarea {
+  min-height: 88px;
+  resize: none;
+}
+
+/* Page chrome */
+.dq-mobile-page {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding:
+    calc(var(--dq-mobile-pad-x) + var(--dq-safe-top))
+    calc(var(--dq-mobile-pad-x) + var(--dq-safe-right))
+    calc(var(--dq-mobile-pad-x) + var(--dq-safe-bottom))
+    calc(var(--dq-mobile-pad-x) + var(--dq-safe-left));
+  max-width: var(--dq-mobile-page-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dq-mobile-page--flush {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+.dq-mobile-page--flush > .dq-app-bar,
+.dq-mobile-page--flush > .dq-mobile-scroll,
+.dq-mobile-page--flush > .dq-mobile-composer {
+  padding-left: calc(var(--dq-mobile-pad-x) + var(--dq-safe-left));
+  padding-right: calc(var(--dq-mobile-pad-x) + var(--dq-safe-right));
+}
+
+.dq-mobile-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--dq-chat-turn-gap, 14px);
+  padding-bottom: var(--dq-space-md, 12px);
+  scroll-behavior: smooth;
+}
+
+.dq-mobile-brand {
+  margin-top: auto;
+  margin-bottom: var(--dq-space-lg, 20px);
+}
+
+.dq-mobile-brand__title {
+  margin: 0;
+  font-size: var(--dq-mobile-brand-size);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--dq-label-primary);
+}
+
+.dq-mobile-brand__lead {
+  margin: 12px 0 0;
+  max-width: 20rem;
+  color: var(--dq-label-secondary);
+  font-size: var(--dq-font-size-body);
+  line-height: 1.45;
+}
+
+/* Message bubbles (consume --dq-msg-* from dq-agent / themes) */
+.dq-msg {
+  box-sizing: border-box;
+  max-width: 92%;
+  padding: 12px 14px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: var(--dq-font-size-body);
+}
+
+.dq-msg--user {
+  align-self: flex-end;
+  background: var(--dq-msg-user-bg);
+  border: 1px solid var(--dq-msg-user-border);
+  color: var(--dq-msg-user-fg);
+  border-radius: var(--dq-msg-user-radius);
+  box-shadow: var(--dq-msg-user-shadow);
+}
+
+.dq-msg--agent {
+  align-self: flex-start;
+  color: var(--dq-msg-agent-fg);
+  padding-top: var(--dq-msg-agent-pad-y);
+  padding-bottom: var(--dq-msg-agent-pad-y);
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 100%;
+}
+
+.dq-msg--system {
+  align-self: stretch;
+  max-width: 100%;
+  color: var(--dq-msg-agent-secondary, var(--dq-label-secondary));
+  background: color-mix(in srgb, var(--dq-label-primary) 4%, transparent);
+  border-radius: var(--dq-radius-control-sm, 8px);
+  font-size: var(--dq-font-size-caption, 12px);
+}
+
+.dq-mobile-composer {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: end;
+  padding-top: 10px;
+  padding-bottom: calc(10px + var(--dq-safe-bottom));
+  border-top: 1px solid var(--dq-shell-divider, var(--dq-border-subtle));
+  background: var(--dq-composer-fade, transparent);
+}
+
+.dq-mobile-composer .dq-input--textarea {
+  min-height: var(--dq-mobile-touch-min);
+  max-height: var(--dq-composer-max-height, 240px);
+  border-radius: var(--dq-composer-radius, 14px);
+}
+
+.dq-list-tile {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: var(--dq-radius-control, 12px);
+  border: 1px solid var(--dq-border-subtle, var(--dq-border));
+  background: var(--dq-bg-elevated, var(--dq-fill-on-glass));
+  color: inherit;
+  cursor: pointer;
+  transition: var(--dq-transition-hover), var(--dq-transition-active);
+}
+
+.dq-list-tile:active {
+  transform: scale(0.985);
+}
+
+.dq-list-tile__title {
+  font-weight: 600;
+  color: var(--dq-label-primary);
+}
+
+.dq-list-tile__meta {
+  font-size: var(--dq-font-size-caption, 12px);
+  color: var(--dq-label-secondary);
+}

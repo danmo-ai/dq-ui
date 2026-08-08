@@ -52,12 +52,14 @@ Product-side gates (in Studio): `make check-ep-boundary` and `make check-theme-l
 | Recipe light | `dq-recipe-light.css` | Shared Liquid Glass shell/glass for light themes |
 | Glass | `dq-glass.css` | Frosted surface utilities (`.dq-glass--*`) |
 | Tauri macOS | `dq-tauri-macos.css` | Desktop webview chrome (`dq-tauri-macos` on `<html>`) |
+| Mobile | `dq-mobile.css` | Phone browser overlay (`dq-mobile` on `<html>`): safe-area, touch targets, chat chrome |
 
 ```ts
 import '@danqing/dq-tokens/dq-mac.css';
 import '@danqing/dq-tokens/dq-recipe-dark.css';
 import '@danqing/dq-tokens/dq-recipe-light.css';
 import '@danqing/dq-tokens/dq-glass.css';
+import '@danqing/dq-tokens/dq-mobile.css'; // phone browsers: also add class `dq-mobile` on <html>
 import '@danqing/dq-ui/style.css';
 import '@danqing/dq-shell/style.css';
 ```
@@ -79,13 +81,13 @@ Local previews: open `packages/tokens/demo/index.html` (gallery) or the per-them
 
 Primitives built on Reka UI + Lucide. Use `Dq*` in templates only; only this package may import `reka-ui` directly.
 
-**Layout / display:** `DqStack`, `DqRow`, `DqCol`, `DqText`, `DqEmpty`, `DqAlert`, `DqTag`, `DqCountBadge`, `DqProgress`, `DqTooltip`, `DqCollapse` / `DqCollapseItem`
+**Layout / display:** `DqStack`, `DqRow`, `DqCol`, `DqText`, `DqEmpty`, `DqAlert`, `DqTag`, `DqCountBadge`, `DqProgress`, `DqTooltip`, `DqCollapse` / `DqCollapseItem`, `DqAppBar`, `DqMessageBubble`, `DqActionCard`
 
 **Actions:** `DqButton`, `DqIconButton`, `DqDropdown` / `DqDropdownMenu` / `DqDropdownItem`
 
 **Forms:** `DqInput`, `DqSelect` / `DqOption` (`size="sm"` for compact chips; `variant="ghost"` for borderless toolbars), `DqSlider`, `DqSwitch`, `DqCheckbox` / `DqCheckboxGroup`, `DqInputNumber`, `DqDatePicker`
 
-**Size API:** compact controls use `size="sm"` only (not `small`). Applies to Button / Input / Select / Segmented / Tag / Switch / Checkbox / DatePicker / Text.
+**Size API:** compact controls use `size="sm"`; touch / mobile use `size="lg"` (44px). Applies to Button / IconButton / Input (and Select / Segmented / Tag / Switch / Checkbox / DatePicker / Text for `sm`).
 
 **Navigation:** `DqSegmented` (`size="sm"`), `DqSectionTabs` / `DqSectionTabTrigger` / `DqSectionTabPanel`
 

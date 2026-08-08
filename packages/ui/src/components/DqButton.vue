@@ -6,7 +6,7 @@ defineOptions({ inheritAttrs: false });
 const props = withDefaults(
   defineProps<{
     type?: 'default' | 'primary' | 'text' | 'danger' | 'warning';
-    size?: 'default' | 'sm';
+    size?: 'default' | 'sm' | 'lg';
     disabled?: boolean;
     loading?: boolean;
     round?: boolean;
@@ -36,6 +36,7 @@ const cls = computed(() => {
     'dq-btn',
     `dq-btn--${props.type}`,
     props.size === 'sm' ? 'dq-btn--sm' : '',
+    props.size === 'lg' ? 'dq-btn--lg' : '',
     legacyPlain ? 'dq-btn--plain is-plain' : '',
     legacyRound ? 'dq-btn--round' : '',
     legacyCircle ? 'is-circle' : '',
