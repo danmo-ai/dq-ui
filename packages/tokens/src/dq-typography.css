@@ -10,12 +10,17 @@
  *
  * Theme-invariant: palette CSS must NOT override --dq-font-size-*.
  * Themes may change font-family / color / weight, never the scale.
+ * Never set font-size on `html` — rem tokens (and --dq-space-*) would compound
+ * against the smaller root (mac used to read ~12.5px body vs 14px elsewhere).
  * Prefer weight/color for hierarchy — avoid stacking competing sizes.
  * Legacy aliases map onto these four. Do not invent new steps or hardcode 10/11px.
  */
 
 :root,
 html {
+  /* Keep 1rem == browser default. Palettes set body, never html { font-size }. */
+  font-size: 100%;
+
   /* ── Numeric scale (implementation detail) ── */
   --dq-font-size-2xs: 0.75rem;   /* 12px */
   --dq-font-size-xs:  0.75rem;   /* 12px */
@@ -72,4 +77,9 @@ html {
 
   --dq-scrollbar-size: 6px;
   --dq-scrollbar-size-hover: 8px;
+}
+
+body {
+  font-size: var(--dq-font-size-body);
+  line-height: var(--dq-line-height-normal);
 }

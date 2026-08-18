@@ -227,7 +227,6 @@ html.dq-mac {
 html.dq-mac,
 html.dq-mac-ui {
   font-family: var(--dq-font-sans);
-  font-size: var(--dq-font-size-body);
   line-height: var(--dq-line-height-normal);
   background-color: var(--dq-bg-page);
   background-image: var(--dq-bg-page-glow);
@@ -239,6 +238,7 @@ html.dq-mac-ui {
 
 html.dq-mac body,
 html.dq-mac-ui body {
+  font-size: var(--dq-font-size-body);
   background-color: var(--dq-bg-page);
 }
 

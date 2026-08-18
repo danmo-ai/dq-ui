@@ -34,7 +34,7 @@ Product-side gates (in Studio): `make check-ep-boundary` and `make check-theme-l
 
 ## Themes
 
-`@danqing/dq-tokens` ships a shared spacing / typography base (`dq-typography.css`) plus a **curated set of macOS 26 Liquid Glass** palettes (soft translucent shell + true glass floats). Themes differ by accent/hue only.
+`@danqing/dq-tokens` ships a shared spacing / typography base (`dq-typography.css`) plus a **curated set of macOS 26 Liquid Glass** palettes (soft translucent shell + true glass floats). Themes differ by accent/hue only. Type scale is theme-invariant (`caption` 12 / `body` 14 / `title` 16); palettes must not set `font-size` on `html` (rem would compound).
 
 | Theme | Slug | CSS import | `<html>` class | Dark |
 |-------|------|------------|----------------|------|
