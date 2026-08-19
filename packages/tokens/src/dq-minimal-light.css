@@ -191,11 +191,11 @@ html.dq-minimal-light,
   --dq-chat-gutter: 28px;
   --dq-chat-turn-gap: 14px;
   --dq-chat-block-gap: 4px;
-  --dq-msg-user-bg: color-mix(in srgb, var(--dq-accent) 12%, #ffffff);
-  --dq-msg-user-border: color-mix(in srgb, var(--dq-accent) 20%, transparent);
+  --dq-msg-user-bg: #ffffff;
+  --dq-msg-user-border: rgba(0, 0, 0, 0.08);
   --dq-msg-user-fg: var(--dq-label-primary);
   --dq-msg-user-radius: 16px 16px 5px 16px;
-  --dq-msg-user-shadow: none;
+  --dq-msg-user-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   --dq-msg-agent-fg: #000000;
   --dq-msg-agent-secondary: #222222;
   --dq-msg-agent-pad-y: 2px;

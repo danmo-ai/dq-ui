@@ -190,8 +190,8 @@ html.dq-tokyo-night,
   --dq-chat-gutter: 28px;
   --dq-chat-turn-gap: 14px;
   --dq-chat-block-gap: 4px;
-  --dq-msg-user-bg: color-mix(in srgb, var(--dq-accent) 22%, transparent);
-  --dq-msg-user-border: color-mix(in srgb, var(--dq-accent) 28%, transparent);
+  --dq-msg-user-bg: color-mix(in srgb, var(--dq-accent) 13%, transparent);
+  --dq-msg-user-border: color-mix(in srgb, var(--dq-accent) 18%, transparent);
   --dq-msg-user-fg: var(--dq-label-primary);
   --dq-msg-user-radius: 16px 16px 5px 16px;
   --dq-msg-user-shadow: none;

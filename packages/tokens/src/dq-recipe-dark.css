@@ -31,38 +31,41 @@ html.dq-nord-dark {
   --dq-glass-floating-bar-bg: color-mix(in srgb, var(--dq-material-chrome) 22%, transparent);
   --dq-glass-scrim: rgba(0, 0, 0, 0.22);
 
-  /* Timeline density — footnotes stay tight; turns keep a little air */
-  --dq-chat-turn-gap: 14px;
+  /* Timeline density — footnotes stay tight; turns breathe (reading rhythm) */
+  --dq-chat-turn-gap: 20px;
   --dq-chat-block-gap: 4px;
 
   --dq-glass-border: color-mix(in srgb, var(--dq-label-primary) 10%, transparent);
   --dq-glass-border-strong: color-mix(in srgb, var(--dq-label-primary) 16%, transparent);
   --dq-glass-highlight: color-mix(in srgb, #ffffff 16%, transparent);
 
-  --dq-glass-blur: saturate(230%) blur(40px);
-  --dq-glass-blur-light: saturate(220%) blur(22px);
-  --dq-glass-blur-heavy: saturate(240%) blur(56px);
+  /* Restrained saturation — frosted, not tinted (productivity-neutral chrome) */
+  --dq-glass-blur: saturate(170%) blur(40px);
+  --dq-glass-blur-light: saturate(160%) blur(22px);
+  --dq-glass-blur-heavy: saturate(180%) blur(56px);
 
   --dq-fill-on-glass: color-mix(in srgb, var(--dq-label-primary) 8%, transparent);
   --dq-fill-on-glass-hover: color-mix(in srgb, var(--dq-label-primary) 12%, transparent);
   --dq-fill-on-glass-pressed: color-mix(in srgb, var(--dq-label-primary) 14%, transparent);
   --dq-fill-on-glass-subtle: color-mix(in srgb, var(--dq-label-primary) 6%, transparent);
 
-  /* Ambient wash — stronger so translucent chrome has color to refract */
+  /* Ambient wash — a whisper of accent, not a colored theme. Modern agent
+     surfaces (Cursor / Linear / Claude) keep the canvas neutral so content
+     and accent-colored actions carry the hierarchy. */
   --dq-bg-page-glow:
     radial-gradient(
-      ellipse 95% 60% at 16% 8%,
-      color-mix(in srgb, var(--dq-accent) 30%, transparent) 0%,
-      transparent 58%
+      ellipse 90% 55% at 16% 0%,
+      color-mix(in srgb, var(--dq-accent) 9%, transparent) 0%,
+      transparent 55%
     ),
     radial-gradient(
-      ellipse 75% 50% at 86% 82%,
-      color-mix(in srgb, var(--dq-accent) 20%, transparent) 0%,
-      transparent 52%
+      ellipse 70% 45% at 88% 90%,
+      color-mix(in srgb, var(--dq-accent) 5%, transparent) 0%,
+      transparent 50%
     ),
     radial-gradient(
       ellipse 120% 80% at 50% 100%,
-      color-mix(in srgb, #ffffff 8%, transparent) 0%,
+      color-mix(in srgb, #ffffff 4%, transparent) 0%,
       transparent 55%
     );
 
