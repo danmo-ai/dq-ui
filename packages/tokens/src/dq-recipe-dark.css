@@ -115,6 +115,13 @@ html.dq-nord-dark {
     color-mix(in srgb, var(--dq-bg-page) 82%, transparent) 18%,
     transparent 100%
   );
+
+  /* Sidebar navigation ink — reuse opacity ladder from palette */
+  --dq-sidebar-section-fg: var(--dq-label-tertiary);
+  --dq-sidebar-item-fg: var(--dq-label-secondary);
+  --dq-sidebar-item-emphasis-fg: var(--dq-label-primary);
+  --dq-sidebar-item-active-fg: var(--dq-label-primary);
+  --dq-sidebar-meta-fg: var(--dq-label-quaternary);
 }
 
 @media (prefers-reduced-transparency: reduce) {

@@ -1,9 +1,10 @@
 /**
- * DanQing typography — 4 semantic steps (comfortable dense, theme-invariant).
+ * DanQing typography — semantic steps (comfortable dense, theme-invariant).
  *
  * Base: 16px (browser default) so 1rem == 16px.
  *
  *   caption  12px  badges / kbd / timestamps / hints
+ *   nav      13px  sidebar / rail navigation rows only
  *   body     14px  default UI + chat (chrome, tools, forms, stream)
  *   prose    14px  alias of body — no chat/UI size jump
  *   title    16px  one page/session title per view
@@ -33,11 +34,12 @@ html {
   --dq-font-size-3xl: 1rem;      /* 16px */
   --dq-font-size-4xl: 1rem;      /* 16px */
 
-  /* ── Canonical 4 steps ── */
-  --dq-font-size-caption: 0.75rem;  /* 12px */
-  --dq-font-size-body:    0.875rem; /* 14px */
-  --dq-font-size-prose:   0.875rem; /* 14px — same as body */
-  --dq-font-size-title:   1rem;     /* 16px */
+  /* ── Canonical steps ── */
+  --dq-font-size-caption: 0.75rem;    /* 12px */
+  --dq-font-size-nav:     0.8125rem;  /* 13px — shell navigation only */
+  --dq-font-size-body:    0.875rem;   /* 14px */
+  --dq-font-size-prose:   0.875rem;   /* 14px — same as body */
+  --dq-font-size-title:   1rem;       /* 16px */
 
   /* ── Legacy aliases → collapse into the 4 steps ── */
   --dq-font-size-footnote:  var(--dq-font-size-caption);

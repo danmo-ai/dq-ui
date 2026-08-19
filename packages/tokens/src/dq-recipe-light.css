@@ -113,6 +113,13 @@ html.dq-minimal-light {
 
   --dq-border-hairline: rgba(0, 0, 0, 0.06);
   --dq-separator-light: rgba(0, 0, 0, 0.06);
+
+  /* Sidebar navigation ink — softer than stream body on light chrome */
+  --dq-sidebar-section-fg: var(--dq-label-tertiary);
+  --dq-sidebar-item-fg: color-mix(in srgb, var(--dq-label-primary) 55%, transparent);
+  --dq-sidebar-item-emphasis-fg: var(--dq-label-secondary);
+  --dq-sidebar-item-active-fg: var(--dq-label-secondary);
+  --dq-sidebar-meta-fg: var(--dq-label-quaternary);
 }
 
 @media (prefers-reduced-transparency: reduce) {
