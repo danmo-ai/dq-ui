@@ -615,8 +615,9 @@
   flex-shrink: 0;
   font-family: var(--dq-font-mono);
   font-size: var(--dq-font-size-body);
-  font-weight: 600;
-  color: var(--dq-label-primary);
+  font-weight: 500;
+  color: var(--dq-label-secondary);
+  letter-spacing: -0.01em;
 }
 
 .dq-tool-card__summary {

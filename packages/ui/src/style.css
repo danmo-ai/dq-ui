@@ -502,8 +502,9 @@
   flex-direction: column;
   max-height: 100vh;
   border: 1px solid var(--dq-glass-border);
-  /* Single frost sheet — soft edge only, no heavy slab shadow */
-  background: var(--dq-glass-panel-bg, var(--dq-glass-floating-bar-bg));
+  /* Heavier frost than shell panels — drawers host dense content (plans,
+     file trees, terminals), so readability beats translucency here */
+  background: var(--dq-glass-bar-bg-strong, var(--dq-glass-panel-bg));
   -webkit-backdrop-filter: var(--dq-glass-blur-heavy);
   backdrop-filter: var(--dq-glass-blur-heavy);
   box-shadow:
@@ -588,9 +589,16 @@
 }
 
 .dq-empty__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   margin-bottom: 12px;
+  border-radius: 12px;
+  background: var(--dq-fill-muted-surface, color-mix(in srgb, var(--dq-label-primary) 5%, transparent));
   color: var(--dq-label-tertiary);
-  font-size: var(--dq-font-size-display);
+  font-size: var(--dq-font-size-title);
 }
 
 .dq-empty__description {

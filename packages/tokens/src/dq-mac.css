@@ -198,11 +198,12 @@ html.dq-mac {
   --dq-chat-gutter: 32px;
   --dq-chat-turn-gap: 14px;
   --dq-chat-block-gap: 4px;
-  --dq-msg-user-bg: rgba(10, 132, 255, 0.18);
-  --dq-msg-user-border: rgba(10, 132, 255, 0.22);
+  /* Neutral elevated bubble (ChatGPT/Claude-style) — accent stays on actions */
+  --dq-msg-user-bg: rgba(255, 255, 255, 0.07);
+  --dq-msg-user-border: rgba(255, 255, 255, 0.09);
   --dq-msg-user-fg: rgba(255, 255, 255, 0.95);
-  --dq-msg-user-radius: 18px 18px 6px 18px;
-  --dq-msg-user-shadow: none;
+  --dq-msg-user-radius: 16px 16px 6px 16px;
+  --dq-msg-user-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
   --dq-msg-agent-fg: rgba(255, 255, 255, 0.95);
   --dq-msg-agent-secondary: rgba(255, 255, 255, 0.78);
   --dq-msg-agent-pad-y: 6px;
